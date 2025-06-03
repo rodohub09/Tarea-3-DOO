@@ -9,8 +9,8 @@ public class Moneda100 extends Moneda{
     /**
      * Constructor que llama a la super clases.
      * */
-    public Moneda100(){
-        super();
+    public Moneda100(int serie){
+        super(serie);
     }
 
     /**

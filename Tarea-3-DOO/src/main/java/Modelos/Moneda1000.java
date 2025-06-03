@@ -3,13 +3,13 @@ package Modelos;
  * Subclase de {@link Moneda} con valor 1000.
  */
 
-public class Moneda1000 extends Moneda{
+public class Moneda1000 extends Moneda {
 
     /**
      * Constructor que llama a la super clases.
      * */
-    public Moneda1000(){
-        super();
+    public Moneda1000(int serie){
+        super(serie);
     }
 
     /**

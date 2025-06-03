@@ -4,8 +4,12 @@ package Modelos;
  * expendedora.
  * Ocupa la interfaz {@link Moneda}
  * */
-public abstract class Moneda implements Comparable<Moneda>{
-    public Moneda(){}
+public abstract class Moneda implements Comparable<Moneda> {
+    protected int serie;
+
+    public Moneda(int serie){
+        this.serie = serie;
+    }
 
     /**
      * Getter de la serie de la moneda.

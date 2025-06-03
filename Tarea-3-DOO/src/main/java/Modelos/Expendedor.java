@@ -14,6 +14,7 @@ public class Expendedor {
     private Deposito<Dulce> snickers;
     private Deposito<Dulce> super8;
     private Deposito<Moneda> monVu;
+    private Producto depositoProducto;
 
     /**
      * Constructor
@@ -26,6 +27,7 @@ public class Expendedor {
         snickers = new Deposito<>();
         super8 = new Deposito<>();
         monVu = new Deposito<>();
+        depositoProducto = null;
 
         for (int i = 0; i < stock; i++) {
             coca.addItem(new CocaCola());
@@ -47,11 +49,11 @@ public class Expendedor {
      * @throws NoHayProductoException Lanza esta excepcion, al intentar comprar un producto el cual <b>ya no tiene stock.</b>
      * @return El producto que se selecciono.
      * */
-    public Producto comprarProducto(Moneda moneda, Productos p) throws PagoIncorrectoException,PagoInsuficienteException,NoHayProductoException{
+    public void comprarProducto(Moneda moneda, Productos p) throws PagoIncorrectoException,PagoInsuficienteException,NoHayProductoException {
         if (moneda == null)
             throw new PagoIncorrectoException();
 
-        if (moneda.getValor()<p.getPrecio()) {
+        if (moneda.getValor() < p.getPrecio()) {
             monVu.addItem(moneda);
             throw new PagoInsuficienteException();
         }
@@ -77,17 +79,28 @@ public class Expendedor {
                 break;
         }
 
+
+        int vuelto = moneda.getValor() - p.getPrecio();
         if (product == null) {
             monVu.addItem(moneda);
             throw new NoHayProductoException();
         }
 
-        else {
-            for (int i = 0; i < (moneda.getValor() - p.getPrecio()) / 100; i++) {
-                monVu.addItem(new Moneda100());
+        while (vuelto > 0) {
+            if (vuelto >= 1000) {
+                monVu.addItem(new Moneda1000(moneda.serie));
+                vuelto -= 1000;
+            } else if (vuelto >= 500) {
+                monVu.addItem(new Moneda500(moneda.serie));
+                vuelto -= 500;
+            } else if (vuelto >= 100) {
+                monVu.addItem(new Moneda100(moneda.serie));
+                vuelto -= 100;
+            } else {
+                break;
             }
-            return product;
         }
+            depositoProducto = product;
     }
 
     /**
@@ -96,5 +109,11 @@ public class Expendedor {
      * */
     public Moneda getVuelto(){
         return monVu.getItem();
+    }
+
+    public Producto getProducto() {
+        Producto producto =  depositoProducto;
+        depositoProducto = null;
+        return producto;
     }
 }
