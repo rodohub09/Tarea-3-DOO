@@ -5,8 +5,10 @@ import java.awt.*;
 
 public class Ventana extends JFrame {
     public Ventana() {
+        super();
         setTitle("Expendedor");
         setSize(730, 710);
+        setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         PanelPrincipal panel= new PanelPrincipal();

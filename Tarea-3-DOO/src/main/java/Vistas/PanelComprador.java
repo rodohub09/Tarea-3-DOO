@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class PanelComprador extends JPanel {
     public PanelComprador() {
+        super();
     }
 
     @Override
@@ -13,7 +14,7 @@ public class PanelComprador extends JPanel {
         try {
             ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Inventario.png"));
             Image image = imageIcon.getImage();
-            g.drawImage(image,540, 180,null);
+            g.drawImage(image,540, 160,null);
             ImageIcon imageIcon2 = new ImageIcon(getClass().getClassLoader().getResource("Billetera.png"));
             Image image2 = imageIcon2.getImage();
             g.drawImage(image2,452,600 ,null);

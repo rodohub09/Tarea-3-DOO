@@ -2,10 +2,29 @@ package Vistas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class PanelExpendedor extends JPanel {
+    private PanelCoca coca;
+    private PanelFanta fanta;
+    private PanelSprite sprite;
+    private PanelSuper8 super8;
+    private PanelSnickers snickers;
 
     public PanelExpendedor() {
+        super();
+        setSize(730, 710);
+        setLayout(null);
+        coca = new PanelCoca();
+        fanta = new PanelFanta();
+        sprite = new PanelSprite();
+        super8 = new PanelSuper8();
+        snickers = new PanelSnickers();
+        add(coca);
+        add(fanta);
+        add(sprite);
+        add(super8);
+        add(snickers);
     }
 
     @Override
