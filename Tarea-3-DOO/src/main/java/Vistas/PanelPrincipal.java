@@ -13,8 +13,8 @@ public class PanelPrincipal extends JPanel {
         exp = new PanelExpendedor();
         com = new PanelComprador();
         this.setBackground(Color.white);
-        add(exp);
         add(com);
+        add(exp);
     }
 
 }
