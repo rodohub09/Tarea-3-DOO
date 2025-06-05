@@ -4,12 +4,12 @@ import java.util.ArrayList;
 /**
  * Clase generica de depositos que estan compuestos por {@link ArrayList}.
  * */
-public class Deposito<T>{
+public class Deposito<T> {
 
     /**
-     * Variable que instancia un {@Link ArrayList} generico.
+     * Variable que instancia un {@link ArrayList} generico.
      * */
-    public ArrayList<T> dep = new ArrayList<>();
+    protected ArrayList<T> dep = new ArrayList<>();
 
     /**
      * Setter que agrega un item, en este un tipo de producto, al deposito.
@@ -23,11 +23,14 @@ public class Deposito<T>{
      * Getter del producto que esta en el deposito, sacandolo de este.
      * @return El primer producto(Puntero) del deposito, si no hay productos devuelve null.
      * */
-    public T getItem(){
+    public T getItem() {
         if (dep.isEmpty())
             return null;
         else
             return dep.removeFirst();
     }
 
+    public ArrayList<T> getDep() {
+        return dep;
+    }
 }
