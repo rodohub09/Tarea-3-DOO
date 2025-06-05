@@ -15,19 +15,23 @@ public class Expendedor {
     protected Deposito<Dulce> snickers;
     protected Deposito<Dulce> super8;
     protected Deposito<Moneda> monVu;
+    private Deposito<Moneda> monedas;
     protected Producto depositoProducto;
+    public int saldo;
 
     /**
      * Constructor
      * @param stock cantidad de {@link Producto} que pueden almacenar los depositos del expendedor.
      * */
     public Expendedor(int stock){
+        saldo = 0;
         coca = new Deposito<>();
         sprite = new Deposito<>();
         fanta = new Deposito<>();
         snickers = new Deposito<>();
         super8 = new Deposito<>();
         monVu = new Deposito<>();
+        monedas = new Deposito<>();
         depositoProducto = null;
 
         for (int i = 0; i < stock; i++) {
@@ -42,19 +46,14 @@ public class Expendedor {
     /**
      *<p> Refiere a la accion de comprar un producto de la maquina expendedora, pidiendo seleccionar el producto y pagarlo
      * para posteriormente expulsar dicho producto.</p>
-     * @param moneda {@link Moneda} de pago.
      *<p>@param p A traves del enum {@link Productos}, se ocupa el numero de opcion, para que la expendedora identifique
      *          el producto a comprar.</p>
      * @throws PagoIncorrectoException Lanza esta excepcion, al entregar un <b>valor nulo</b> como moneda.
      * @throws PagoInsuficienteException Lanza esta excepción, al entregar una moneda con valor <b>menor</b> al precio del producto seleccionado.
      * @throws NoHayProductoException Lanza esta excepcion, al intentar comprar un producto el cual <b>ya no tiene stock.</b>
      * */
-    public void comprarProducto(Moneda moneda, Productos p) throws PagoIncorrectoException,PagoInsuficienteException,NoHayProductoException {
-        if (moneda == null)
-            throw new PagoIncorrectoException();
-
-        if (moneda.getValor() < p.getPrecio()) {
-            monVu.addItem(moneda);
+    public void comprarProducto(Productos p) throws PagoInsuficienteException,NoHayProductoException {
+        if (this.saldo < p.getPrecio()) {
             throw new PagoInsuficienteException();
         }
 
@@ -81,25 +80,33 @@ public class Expendedor {
 
 
         if (product == null) {
-            monVu.addItem(moneda);
             throw new NoHayProductoException();
         }
 
-        int vuelto = moneda.getValor() - p.getPrecio();
+        int vuelto = saldo - p.getPrecio();
         while (vuelto > 0) {
             if (vuelto >= 1000) {
-                monVu.addItem(new Moneda1000(moneda.serie));
+                monVu.addItem(new Moneda1000(saldo*2- p.getPrecio()));
                 vuelto -= 1000;
             } else if (vuelto >= 500) {
-                monVu.addItem(new Moneda500(moneda.serie));
+                monVu.addItem(new Moneda500(saldo*2- p.getPrecio()));
                 vuelto -= 500;
             } else if (vuelto >= 100) {
-                monVu.addItem(new Moneda100(moneda.serie));
+                monVu.addItem(new Moneda100(saldo*2- p.getPrecio()));
                 vuelto -= 100;
             } else {
                 break;
             }
         }
+        this.saldo = 0;
         depositoProducto = product;
+    }
+
+    public void ingresarMoneda(Moneda m) throws PagoIncorrectoException{
+        if(m == null)
+            throw new PagoIncorrectoException();
+
+        saldo += m.getValor();
+        monedas.addItem(m);
     }
 }
