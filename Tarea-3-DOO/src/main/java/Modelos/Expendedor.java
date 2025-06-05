@@ -1,4 +1,5 @@
 package Modelos;
+
 /**
  * Maquina expendedora de diversos productos(6), apilados en sus respectivos depositos.
  */
@@ -6,15 +7,15 @@ package Modelos;
 public class Expendedor {
 
     /**
-     * Variables privadas de cada {@link Deposito}, con el nombre del producto que almacena.
+     * Variables privadas de cada {@link Deposito}, con el nombre del producto que almacena y una variable privada de {@link Producto} para almacenar el producto comprado en el depósito.
      * */
-    private Deposito<Bebida> coca;
-    private Deposito<Bebida> sprite;
-    private Deposito<Bebida> fanta;
-    private Deposito<Dulce> snickers;
-    private Deposito<Dulce> super8;
-    private Deposito<Moneda> monVu;
-    private Producto depositoProducto;
+    protected Deposito<Bebida> coca;
+    protected Deposito<Bebida> sprite;
+    protected Deposito<Bebida> fanta;
+    protected Deposito<Dulce> snickers;
+    protected Deposito<Dulce> super8;
+    protected Deposito<Moneda> monVu;
+    protected Producto depositoProducto;
 
     /**
      * Constructor
@@ -47,7 +48,6 @@ public class Expendedor {
      * @throws PagoIncorrectoException Lanza esta excepcion, al entregar un <b>valor nulo</b> como moneda.
      * @throws PagoInsuficienteException Lanza esta excepción, al entregar una moneda con valor <b>menor</b> al precio del producto seleccionado.
      * @throws NoHayProductoException Lanza esta excepcion, al intentar comprar un producto el cual <b>ya no tiene stock.</b>
-     * @return El producto que se selecciono.
      * */
     public void comprarProducto(Moneda moneda, Productos p) throws PagoIncorrectoException,PagoInsuficienteException,NoHayProductoException {
         if (moneda == null)
@@ -80,12 +80,12 @@ public class Expendedor {
         }
 
 
-        int vuelto = moneda.getValor() - p.getPrecio();
         if (product == null) {
             monVu.addItem(moneda);
             throw new NoHayProductoException();
         }
 
+        int vuelto = moneda.getValor() - p.getPrecio();
         while (vuelto > 0) {
             if (vuelto >= 1000) {
                 monVu.addItem(new Moneda1000(moneda.serie));
@@ -100,20 +100,6 @@ public class Expendedor {
                 break;
             }
         }
-            depositoProducto = product;
-    }
-
-    /**
-     * Getter del vuelto, osea una moneda con el valor del exceso de pago al comprar un producto.
-     * @return una moneda de vuelto.
-     * */
-    public Moneda getVuelto(){
-        return monVu.getItem();
-    }
-
-    public Producto getProducto() {
-        Producto producto =  depositoProducto;
-        depositoProducto = null;
-        return producto;
+        depositoProducto = product;
     }
 }
