@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Ventana extends JFrame {
-    public Ventana() {
+    private static Ventana instancia;
+    private Ventana() {
         super();
         setTitle("Expendedor");
         setSize(730, 710);
@@ -16,7 +17,14 @@ public class Ventana extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Ventana());
+    public static Ventana getInstance() {
+        if (instancia == null){
+            instancia = new Ventana();
+        }
+        return instancia;
+    }
+
+    public static void actualizar() {
+        instancia.repaint();
     }
 }
