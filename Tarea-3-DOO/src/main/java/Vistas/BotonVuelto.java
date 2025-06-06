@@ -1,17 +1,24 @@
 package Vistas;
 
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import Modelos.Expendedor;
+
 
 public class BotonVuelto extends JButton {
-    public BotonVuelto(){
-        this.addActionListener(this.oyenteBoton);
-    }
-    private class oyenteBoton implements MouseListener {
-        @Override
-        public void mouseClicked(MouseEvent e) {
+    PanelExpendedor pe;
 
+    public BotonVuelto(PanelExpendedor pe){
+        this.addActionListener(new oyenteBoton());
+        this.pe = pe;
+    }
+    private class oyenteBoton implements ActionListener {
+        public void actionPerformed(ActionEvent ae){
+            System.out.println("Hola");
         }
+
+
+
     }
 }

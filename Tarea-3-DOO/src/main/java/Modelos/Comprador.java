@@ -8,11 +8,18 @@ import java.util.ArrayList;
 
 public class Comprador {
 
+    private static Comprador comprador;
     private ArrayList<Moneda> billetera = new ArrayList<>();
     private ArrayList<Producto> inventario;
 
-    public Comprador() {
+    private Comprador() {
 
+    }
+
+    public static Comprador getComprador(){
+        if (comprador == null)
+            comprador = new Comprador();
+        return comprador;
     }
 
     public void tomarVuelto(Expendedor exp) {
