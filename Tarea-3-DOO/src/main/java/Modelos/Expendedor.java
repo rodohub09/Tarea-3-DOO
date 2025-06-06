@@ -57,42 +57,19 @@ public class Expendedor {
             throw new PagoInsuficienteException();
         }
 
-        Producto product = null;
-        switch (p.getOpcion()) {
-            case 1:
-                product = coca.getItem();
-                break;
-            case 2:
-                product = sprite.getItem();
-                break;
-            case 3:
-                product = fanta.getItem();
-                break;
-            case 4:
-                product = snickers.getItem();
-                break;
-            case 5:
-                product = super8.getItem();
-                break;
-            default:
-                break;
-        }
-
-
-        if (product == null) {
-            throw new NoHayProductoException();
-        }
+        Producto product = getProducto(p);
+        MonedaGen generador = MonedaGen.getMonedaGen();
 
         int vuelto = saldo - p.getPrecio();
         while (vuelto > 0) {
             if (vuelto >= 1000) {
-                monVu.addItem(new Moneda1000(saldo*2- p.getPrecio()));
+                monVu.addItem(generador.genMoneda1000());
                 vuelto -= 1000;
             } else if (vuelto >= 500) {
-                monVu.addItem(new Moneda500(saldo*2- p.getPrecio()));
+                monVu.addItem(generador.genMoneda500());
                 vuelto -= 500;
             } else if (vuelto >= 100) {
-                monVu.addItem(new Moneda100(saldo*2- p.getPrecio()));
+                monVu.addItem(generador.genMoneda100());
                 vuelto -= 100;
             } else {
                 break;
@@ -100,6 +77,23 @@ public class Expendedor {
         }
         this.saldo = 0;
         depositoProducto = product;
+    }
+
+    private Producto getProducto(Productos p) throws NoHayProductoException {
+        Producto product = null;
+        switch (p.getOpcion()) {
+            case 1 -> product = coca.getItem();
+            case 2 -> product = sprite.getItem();
+            case 3 -> product = fanta.getItem();
+            case 4 -> product = snickers.getItem();
+            case 5 -> product = super8.getItem();
+            default -> {
+            }
+        }
+
+        if (product == null)
+            throw new NoHayProductoException();
+        return product;
     }
 
     public void ingresarMoneda(Moneda m) throws PagoIncorrectoException{
