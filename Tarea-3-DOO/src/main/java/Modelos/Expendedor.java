@@ -9,6 +9,7 @@ public class Expendedor {
     /**
      * Variables privadas de cada {@link Deposito}, con el nombre del producto que almacena y una variable privada de {@link Producto} para almacenar el producto comprado en el depósito.
      * */
+    private static Expendedor expendedor;
     protected Deposito<Bebida> coca;
     protected Deposito<Bebida> sprite;
     protected Deposito<Bebida> fanta;
@@ -23,7 +24,7 @@ public class Expendedor {
      * Constructor
      * @param stock cantidad de {@link Producto} que pueden almacenar los depositos del expendedor.
      * */
-    public Expendedor(int stock){
+    private Expendedor(int stock){
         saldo = 0;
         coca = new Deposito<>();
         sprite = new Deposito<>();
@@ -41,6 +42,12 @@ public class Expendedor {
             snickers.addItem(new Snickers());
             super8.addItem(new Super8());
         }
+    }
+
+    public static Expendedor getExpendedor() {
+        if (expendedor == null)
+            expendedor = new Expendedor(8);
+        return expendedor;
     }
 
     /**
