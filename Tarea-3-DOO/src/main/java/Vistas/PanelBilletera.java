@@ -16,7 +16,7 @@ public class PanelBilletera extends JPanel {
         try {
             ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Billetera.png"));
             Image image = imageIcon.getImage();
-            g.drawImage(image,452,600 ,null);
+            g.drawImage(image,0,0 ,null);
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen del expendedor.");
         }
