@@ -25,6 +25,9 @@ public class PanelExpendedor extends JPanel {
         add(sprite);
         add(super8);
         add(snickers);
+        BotonVuelto bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"));
+        bv.setBounds(450,470,20,20);
+        add(bv);
     }
 
     @Override

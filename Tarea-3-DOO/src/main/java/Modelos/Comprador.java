@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Comprador {
 
     private static Comprador comprador;
-    private ArrayList<Moneda> billetera = new ArrayList<>();
+    protected ArrayList<Moneda> billetera = new ArrayList<>();
     private ArrayList<Producto> inventario;
 
     private Comprador() {
@@ -23,8 +23,10 @@ public class Comprador {
     }
 
     public void tomarVuelto(Expendedor exp) {
-        if (!exp.monVu.dep.isEmpty())
+        if (!exp.monVu.dep.isEmpty()) {
             billetera.addAll(exp.monVu.getDep());
+            exp.monVu.makeEmpty();
+        }
     }
 
     public void tomarProducto(Expendedor exp) {

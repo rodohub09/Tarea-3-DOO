@@ -1,5 +1,7 @@
 package Modelos;
 
+import java.util.ArrayList;
+
 /**
  * Maquina expendedora de diversos productos(6), apilados en sus respectivos depositos.
  */
@@ -42,6 +44,7 @@ public class Expendedor {
             snickers.addItem(new Snickers());
             super8.addItem(new Super8());
         }
+        monVu.addItem(new Moneda500(2222));
     }
 
     public static Expendedor getExpendedor() {
