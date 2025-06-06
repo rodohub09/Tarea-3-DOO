@@ -35,6 +35,9 @@ public class PanelExpendedor extends JPanel {
         snickers.setBounds(205,515,400,100);
         setComponentZOrder(snickers, 4);
         add(snickers);
+        BotonVuelto bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"));
+        bv.setBounds(450,470,20,20);
+        add(bv);
     }
 
     @Override

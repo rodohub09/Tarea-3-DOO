@@ -33,4 +33,8 @@ public class Deposito<T> {
     public ArrayList<T> getDep() {
         return dep;
     }
+
+    public void makeEmpty(){
+        dep.clear();
+    }
 }
