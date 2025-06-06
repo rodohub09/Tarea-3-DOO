@@ -12,20 +12,25 @@ public class PanelSnickers extends JPanel {
         setSize(730, 710);
         setOpaque(false);
         images = new ArrayList<>();
+        try {
+            Image image = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png")).getImage();
+            for (int i = 0; i < 8; i++) {
+                images.add(image);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar imagen CocaCola.png");
+        }
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (int i=0 ; i<2 ; i++) {
-            for (int j=0 ; j<4; j++) {
-                try {
-                    ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png"));
-                    Image image = imageIcon.getImage();
-                    images.add(image);
-                    g.drawImage(image, 235 +j*45 -i*30,515 + i*8 , null);
-                } catch (Exception e) {
-                    System.out.println("Error al cargar la imagen del expendedor.");
+        int index = 0;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (index < images.size()) {
+                    g.drawImage(images.get(index), j * 45 + (1-i) * 30, i * 8, this);
+                    index++;
                 }
             }
         }

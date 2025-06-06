@@ -20,10 +20,20 @@ public class PanelExpendedor extends JPanel {
         sprite = new PanelSprite();
         super8 = new PanelSuper8();
         snickers = new PanelSnickers();
+        coca.setBounds(205,100,400,100);
+        setComponentZOrder(coca, 0);
         add(coca);
+        fanta.setBounds(205,200,400,100);
+        setComponentZOrder(fanta, 1);
         add(fanta);
+        sprite.setBounds(205,300,400,100);
+        setComponentZOrder(sprite, 2);
         add(sprite);
+        super8.setBounds(205,415,400,100);
+        setComponentZOrder(super8, 3);
         add(super8);
+        snickers.setBounds(205,515,400,100);
+        setComponentZOrder(snickers, 4);
         add(snickers);
     }
 
