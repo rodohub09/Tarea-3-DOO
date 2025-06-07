@@ -29,9 +29,9 @@ public class BotonComprarProducto extends JButton {
             try {
                 getExpendedor().comprarProducto(p);
             } catch (PagoInsuficienteException e) {
-                System.out.println("aaaaaa");
+                new Excepciones("No tienes saldo suficiente para comprar este producto.");
             } catch (NoHayProductoException e) {
-                System.out.println("aaaaaa");
+                new Excepciones("No queda stock de este producto.");
             }
         }
     }

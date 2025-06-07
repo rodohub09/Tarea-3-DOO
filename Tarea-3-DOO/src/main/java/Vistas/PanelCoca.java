@@ -25,7 +25,6 @@ public class PanelCoca extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        System.out.println("hola");
         int index = 0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 4; j++) {
