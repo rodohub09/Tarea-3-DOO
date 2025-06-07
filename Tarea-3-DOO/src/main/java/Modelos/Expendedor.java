@@ -45,6 +45,7 @@ public class Expendedor {
             super8.addItem(new Super8());
         }
         monVu.addItem(new Moneda500(2222));
+        saldo = 1000;
     }
 
     public static Expendedor getExpendedor() {

@@ -12,7 +12,6 @@ import static Modelos.Comprador.getComprador;
 
 
 public class BotonVuelto extends JButton {
-    PanelExpendedor pe;
 
     public BotonVuelto(URL rutaImagen){
         super(new ImageIcon(rutaImagen));

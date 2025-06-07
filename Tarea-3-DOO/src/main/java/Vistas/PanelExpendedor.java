@@ -1,8 +1,9 @@
 package Vistas;
 
+import Modelos.Productos;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class PanelExpendedor extends JPanel {
     private PanelCoca coca;
@@ -35,9 +36,14 @@ public class PanelExpendedor extends JPanel {
         snickers.setBounds(205,515,400,100);
         setComponentZOrder(snickers, 4);
         add(snickers);
-        BotonVuelto bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"));
+        JButton bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"));
         bv.setBounds(450,470,20,20);
         add(bv);
+        añadirBotonComprar(Productos.CocaCola,420,255,80,32,"BotonCoca.png");
+        añadirBotonComprar(Productos.Fanta,420,297,80,32,"BotonFanta.png");
+        añadirBotonComprar(Productos.Sprite,420,337,80,32,"BotonSprite.png");
+        añadirBotonComprar(Productos.Super8,420,380,80,32,"BotonSuper8.png");
+        añadirBotonComprar(Productos.Snickers,420,420,80,32,"BotonSnickers.png");
     }
 
     @Override
@@ -50,5 +56,11 @@ public class PanelExpendedor extends JPanel {
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen del expendedor.");
         }
+    }
+
+    private void añadirBotonComprar(Productos p,int x, int y, int w, int h, String s){
+        JButton bv4 = new BotonComprarProducto(getClass().getClassLoader().getResource(s), p);
+        bv4.setBounds(x,y,w,h);
+        add(bv4);
     }
 }
