@@ -22,7 +22,11 @@ public class BotonVuelto extends JButton {
     }
     private class oyenteBoton implements ActionListener {
         public void actionPerformed(ActionEvent ae){
-            getComprador().tomarVuelto(getExpendedor());
+            if(getExpendedor().getMonVu().isEmpty()){
+                new Excepciones("No hay vuelto que recoger en el deposito, espero no te esten estafando.");
+            }else{
+                getComprador().tomarVuelto(getExpendedor());
+            }
         }
     }
 }

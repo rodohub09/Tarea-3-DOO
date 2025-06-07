@@ -26,12 +26,14 @@ public class Comprador {
         if (!exp.monVu.dep.isEmpty()) {
             billetera.addAll(exp.monVu.getDep());
             exp.monVu.makeEmpty();
+        }else{
+            throw new NoHayVueltoException();
         }
     }
 
-    public void tomarProducto(Expendedor exp) throws NoHayNadaEnElDepProd {
+    public void tomarProducto(Expendedor exp) throws NoHayNadaEnElDepProdException {
         if(exp.depositoProducto == null)
-            throw new NoHayNadaEnElDepProd();
+            throw new NoHayNadaEnElDepProdException();
         else{
             Producto p = exp.depositoProducto;
             exp.depositoProducto = null;

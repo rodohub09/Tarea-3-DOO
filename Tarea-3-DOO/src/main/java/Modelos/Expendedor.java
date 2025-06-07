@@ -44,7 +44,6 @@ public class Expendedor {
             snickers.addItem(new Snickers());
             super8.addItem(new Super8());
         }
-        monVu.addItem(new Moneda500(2222));
         saldo = 1000;
     }
 
@@ -113,5 +112,9 @@ public class Expendedor {
 
         saldo += m.getValor();
         monedas.addItem(m);
+    }
+
+    public ArrayList getMonVu(){
+        return monVu.getDep();
     }
 }
