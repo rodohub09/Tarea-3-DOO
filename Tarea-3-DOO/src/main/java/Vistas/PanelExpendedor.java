@@ -44,6 +44,9 @@ public class PanelExpendedor extends JPanel {
         añadirBotonComprar(Productos.Sprite,420,337,80,32,"BotonSprite.png");
         añadirBotonComprar(Productos.Super8,420,380,80,32,"BotonSuper8.png");
         añadirBotonComprar(Productos.Snickers,420,420,80,32,"BotonSnickers.png");
+        JButton bc = new BotonRecogerProducto();
+        bc.setBounds(250,600,93,46);
+        add(bc);
     }
 
     @Override

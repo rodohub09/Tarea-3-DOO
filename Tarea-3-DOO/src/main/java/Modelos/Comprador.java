@@ -10,7 +10,7 @@ public class Comprador {
 
     private static Comprador comprador;
     protected ArrayList<Moneda> billetera = new ArrayList<>();
-    private ArrayList<Producto> inventario;
+    public ArrayList<Producto> inventario = new ArrayList<>();
 
     private Comprador() {
 
@@ -29,10 +29,14 @@ public class Comprador {
         }
     }
 
-    public void tomarProducto(Expendedor exp) {
-        Producto producto =  exp.depositoProducto;
-        exp.depositoProducto = null;
-        inventario.add(producto);
+    public void tomarProducto(Expendedor exp) throws NoHayNadaEnElDepProd {
+        if(exp.depositoProducto == null)
+            throw new NoHayNadaEnElDepProd();
+        else{
+            Producto p = exp.depositoProducto;
+            exp.depositoProducto = null;
+            inventario.add(p);
+        }
     }
 
     public void ingresarMoneda(Expendedor exp, int valor) throws PagoIncorrectoException {
