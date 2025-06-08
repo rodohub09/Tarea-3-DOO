@@ -20,4 +20,8 @@ public class Caracteres extends JLabel {
         }
     }
 
+    public void setCaracteres(String s){
+        super.setText(s);
+    }
+
 }

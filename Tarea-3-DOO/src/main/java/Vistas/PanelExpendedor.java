@@ -14,6 +14,7 @@ public class PanelExpendedor extends JPanel {
     private PanelSuper8 super8;
     private PanelSnickers snickers;
     protected Image image;
+    private Caracteres saldo;
 
     public PanelExpendedor() {
         super();
@@ -60,7 +61,13 @@ public class PanelExpendedor extends JPanel {
         añadirBotonComprar(Productos.Super8,420,380,80,32,"BotonSuper8.png");
         añadirBotonComprar(Productos.Snickers,420,420,80,32,"BotonSnickers.png");
 
-        añadirCaracteres(getExpendedor().getSaldo(),419,165,80,30,Color.WHITE,21.0F);
+        saldo = new Caracteres(getExpendedor().getSaldo(),21.0F);
+        saldo.setBounds(419,165,80,30);
+        saldo.setHorizontalAlignment(SwingConstants.CENTER);
+        saldo.setVerticalAlignment(SwingConstants.CENTER);
+        saldo.setForeground(Color.WHITE);
+        add(saldo);
+
         añadirCaracteres(String.valueOf(Productos.CocaCola.getPrecio()),272,178,50,30,Color.WHITE,16.0F);
         añadirCaracteres(String.valueOf(Productos.Fanta.getPrecio()),272,278,50,30,Color.WHITE,16.0F);
         añadirCaracteres(String.valueOf(Productos.Sprite.getPrecio()),272,378,50,30,Color.WHITE,16.0F);
@@ -72,6 +79,7 @@ public class PanelExpendedor extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image,0, 0,null);
+        saldo.setCaracteres(getExpendedor().getSaldo());
     }
 
     private void añadirBotonComprar(Productos p,int x, int y, int w, int h, String s){
