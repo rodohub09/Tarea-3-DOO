@@ -5,6 +5,8 @@ import Modelos.Productos;
 import javax.swing.*;
 import java.awt.*;
 
+import static Modelos.Expendedor.getExpendedor;
+
 public class PanelExpendedor extends JPanel {
     private PanelCoca coca;
     private PanelFanta fanta;
@@ -57,6 +59,13 @@ public class PanelExpendedor extends JPanel {
         añadirBotonComprar(Productos.Sprite,420,337,80,32,"BotonSprite.png");
         añadirBotonComprar(Productos.Super8,420,380,80,32,"BotonSuper8.png");
         añadirBotonComprar(Productos.Snickers,420,420,80,32,"BotonSnickers.png");
+
+        añadirCaracteres(getExpendedor().getSaldo(),419,165,80,30,Color.WHITE,21.0F);
+        añadirCaracteres(String.valueOf(Productos.CocaCola.getPrecio()),272,178,50,30,Color.WHITE,16.0F);
+        añadirCaracteres(String.valueOf(Productos.Fanta.getPrecio()),272,278,50,30,Color.WHITE,16.0F);
+        añadirCaracteres(String.valueOf(Productos.Sprite.getPrecio()),272,378,50,30,Color.WHITE,16.0F);
+        añadirCaracteres(String.valueOf(Productos.Super8.getPrecio()),272,478,50,30,Color.WHITE,16.0F);
+        añadirCaracteres(String.valueOf(Productos.Snickers.getPrecio()),272,578,50,30,Color.WHITE,16.0F);
     }
 
     @Override
@@ -69,5 +78,14 @@ public class PanelExpendedor extends JPanel {
         JButton bv4 = new BotonComprarProducto(getClass().getClassLoader().getResource(s), p);
         bv4.setBounds(x,y,w,h);
         add(bv4);
+    }
+
+    private void añadirCaracteres(String s,int x, int y, int w, int h,Color c,Float fl){
+        Caracteres car = new Caracteres(s,fl);
+        car.setBounds(x,y,w,h);
+        car.setHorizontalAlignment(SwingConstants.CENTER);
+        car.setVerticalAlignment(SwingConstants.CENTER);
+        car.setForeground(c);
+        add(car);
     }
 }

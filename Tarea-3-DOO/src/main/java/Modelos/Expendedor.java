@@ -156,5 +156,8 @@ public class Expendedor {
         }
     }
 
+    public String getSaldo(){
+        return String.valueOf(saldo);
+    }
 
 }
