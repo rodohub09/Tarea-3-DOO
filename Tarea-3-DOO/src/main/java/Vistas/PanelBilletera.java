@@ -4,21 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelBilletera extends JPanel {
+    protected Image image;
     public PanelBilletera(){
         super();
         setSize(730, 710);
         setOpaque(false);
+        try {
+            image = new ImageIcon(getClass().getClassLoader().getResource("Billetera.png")).getImage();
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen del expendedor.");
+        }
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        try {
-            ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Billetera.png"));
-            Image image = imageIcon.getImage();
-            g.drawImage(image,0,0 ,null);
-        } catch (Exception e) {
-            System.out.println("Error al cargar la imagen del expendedor.");
-        }
+        g.drawImage(image,0,0 ,null);
     }
 }
