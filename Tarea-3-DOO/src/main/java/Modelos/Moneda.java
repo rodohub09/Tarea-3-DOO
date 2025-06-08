@@ -15,8 +15,8 @@ public abstract class Moneda implements Comparable<Moneda> {
      * Getter de la serie de la moneda.
      * @return Serie de la moneda en String
      * */
-    public String getSerie(){
-        return this.toString();
+    public int getSerie(){
+        return this.serie;
     }
 
     /**

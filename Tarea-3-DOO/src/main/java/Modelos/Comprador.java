@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Comprador {
 
     private static Comprador comprador;
-    protected ArrayList<Moneda> billetera = new ArrayList<>();
+    public ArrayList<Moneda> billetera = new ArrayList<>();
     public ArrayList<Producto> inventario = new ArrayList<>();
 
     private Comprador() {
@@ -48,6 +48,10 @@ public class Comprador {
                 return;
             }
         }
+    }
+
+    public void agregarDineroEnBilletera(Moneda m){
+        this.billetera.add(m);
     }
 
     public void ingresarMoneda1000(Expendedor exp) throws PagoIncorrectoException {
