@@ -117,4 +117,28 @@ public class Expendedor {
     public ArrayList getMonVu(){
         return monVu.getDep();
     }
+
+    public int getStock(Deposito dep){
+        return dep.getDep().size();
+    }
+
+    public Deposito<Bebida> getCoca() {
+        return coca;
+    }
+
+    public Deposito<Bebida> getFanta() {
+        return fanta;
+    }
+
+    public Deposito<Bebida> getSprite() {
+        return sprite;
+    }
+
+    public Deposito<Dulce> getSuper8() {
+        return super8;
+    }
+
+    public Deposito<Dulce> getSnickers() {
+        return snickers;
+    }
 }

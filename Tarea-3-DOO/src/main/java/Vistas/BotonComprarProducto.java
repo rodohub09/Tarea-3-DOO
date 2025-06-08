@@ -33,6 +33,7 @@ public class BotonComprarProducto extends JButton {
             } catch (NoHayProductoException e) {
                 new Excepciones("No queda stock de este producto.");
             }
+            Ventana.getInstance().repaint();
         }
     }
 }
