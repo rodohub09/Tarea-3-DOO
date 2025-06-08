@@ -9,24 +9,27 @@ import static Modelos.Comprador.getComprador;
 import static Modelos.MonedaGen.getMonedaGen;
 
 public class BotonAgregarMoneda100Billetera extends JButton {
-    public BotonAgregarMoneda100Billetera(URL rutaImagen){
+    private PanelBilletera panelBilletera;
+
+    public BotonAgregarMoneda100Billetera(URL rutaImagen, PanelBilletera panelBilletera) {
         super(new ImageIcon(rutaImagen));
-        this.addActionListener(new oyenteBoton());
+        this.panelBilletera = panelBilletera;
+
+        addActionListener(new oyenteBoton());
         setOpaque(false);
         setContentAreaFilled(false);
         setBorderPainted(false);
+        setFocusPainted(false);
     }
 
     private class oyenteBoton implements ActionListener {
         static int i = 0;
-        public oyenteBoton(){
 
-        }
-
-        public void actionPerformed(ActionEvent ae){
-            System.out.println(getComprador().billetera);
+        public void actionPerformed(ActionEvent ae) {
             getComprador().getBilletera().agregarMoneda(getMonedaGen().genMoneda100());
-            System.out.println(getComprador().billetera + "----------" + getComprador().billetera.getMoneda(i).getSerie() + "----------" + i);
+
+            ImageIcon icono = new ImageIcon(getClass().getClassLoader().getResource("Mini100.png"));
+            panelBilletera.agregarMoneda(icono, 90, 30 + (i * 10));
             i++;
         }
     }
