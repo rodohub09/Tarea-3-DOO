@@ -18,7 +18,6 @@ public class BotonAgregarMoneda500Billetera extends JButton{
     }
 
     private class oyenteBoton implements ActionListener {
-        public int m;
         static int i = 0;
         public oyenteBoton(){
 
@@ -26,8 +25,8 @@ public class BotonAgregarMoneda500Billetera extends JButton{
 
         public void actionPerformed(ActionEvent ae){
             System.out.println(getComprador().billetera);
-            getComprador().agregarDineroEnBilletera(getMonedaGen().genMoneda500());
-            System.out.println(getComprador().billetera + "----------" + getComprador().billetera.get(i).getSerie() + "----------" + i);
+            getComprador().getBilletera().agregarMoneda(getMonedaGen().genMoneda500());
+            System.out.println(getComprador().billetera + "----------" + getComprador().billetera.getMoneda(i).getSerie() + "----------" + i);
             i++;
         }
     }

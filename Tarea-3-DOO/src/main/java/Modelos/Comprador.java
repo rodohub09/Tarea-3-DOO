@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Comprador {
 
     private static Comprador comprador;
-    public ArrayList<Moneda> billetera = new ArrayList<>();
+    public Billetera billetera = new Billetera();
     public ArrayList<Producto> inventario = new ArrayList<>();
 
     private Comprador() {
@@ -24,7 +24,7 @@ public class Comprador {
 
     public void tomarVuelto(Expendedor exp) {
         if (!exp.monVu.dep.isEmpty()) {
-            billetera.addAll(exp.monVu.getDep());
+            billetera.agregarMonedas(exp);
             exp.monVu.makeEmpty();
         }else{
             throw new NoHayVueltoException();
@@ -42,16 +42,12 @@ public class Comprador {
     }
 
     public void ingresarMoneda(Expendedor exp, int valor) throws PagoIncorrectoException {
-        for (Moneda m : billetera) {
+        for (Moneda m : billetera.getMonedas()) {
             if (m.getValor() == valor) {
                 exp.ingresarMoneda(m);
                 return;
             }
         }
-    }
-
-    public void agregarDineroEnBilletera(Moneda m){
-        this.billetera.add(m);
     }
 
     public void ingresarMoneda1000(Expendedor exp) throws PagoIncorrectoException {
@@ -64,5 +60,9 @@ public class Comprador {
 
     public void ingresarMoneda100(Expendedor exp) throws PagoIncorrectoException {
         ingresarMoneda(exp, 100);
+    }
+
+    public Billetera getBilletera() {
+        return billetera;
     }
 }
