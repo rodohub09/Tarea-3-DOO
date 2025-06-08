@@ -21,6 +21,7 @@ public class Expendedor {
     private Deposito<Moneda> monedas;
     protected Producto depositoProducto;
     public int saldo;
+    private int totalp;
 
     /**
      * Constructor
@@ -28,6 +29,7 @@ public class Expendedor {
      * */
     private Expendedor(int stock){
         saldo = 0;
+        totalp = stock;
         coca = new Deposito<>();
         sprite = new Deposito<>();
         fanta = new Deposito<>();
@@ -141,4 +143,18 @@ public class Expendedor {
     public Deposito<Dulce> getSnickers() {
         return snickers;
     }
+
+    public void refillDeposito(Productos productos) {
+        switch (productos.getOpcion()) {
+            case 1 -> {while(coca.getDep().size()<totalp) coca.addItem(new CocaCola());}
+            case 2 -> {while(fanta.getDep().size()<totalp) fanta.addItem(new Fanta());}
+            case 3 -> {while(sprite.getDep().size()<totalp) sprite.addItem(new Sprite());}
+            case 4 -> {while(super8.getDep().size()<totalp) super8.addItem(new Super8());}
+            case 5 -> {while(snickers.getDep().size()<totalp) snickers.addItem(new Snickers());}
+            default -> {
+            }
+        }
+    }
+
+
 }
