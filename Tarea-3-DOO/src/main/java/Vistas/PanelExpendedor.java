@@ -47,6 +47,15 @@ public class PanelExpendedor extends JPanel {
         JButton bc = new BotonRecogerProducto();
         bc.setBounds(250,600,93,46);
         add(bc);
+        JButton bv1000 = new BotonAgregarMoneda1000Billetera(getClass().getClassLoader().getResource("Moneda1000.png"));
+        bv1000.setBounds(400,570,100,100);
+        add(bv1000);
+        JButton bv500 = new BotonAgregarMoneda500Billetera(getClass().getClassLoader().getResource("Moneda500.png"));
+        bv500.setBounds(505,570,100,100);
+        add(bv500);
+        JButton bv100 = new BotonAgregarMoneda100Billetera(getClass().getClassLoader().getResource("Moneda100.png"));
+        bv100.setBounds(610,570,100,100);
+        add(bv100);
     }
 
     @Override
