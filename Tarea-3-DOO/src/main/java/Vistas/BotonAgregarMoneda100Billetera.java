@@ -27,8 +27,11 @@ public class BotonAgregarMoneda100Billetera extends JButton {
     private class OyenteBoton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            getComprador().getBilletera().agregarMoneda(getMonedaGen().genMoneda100());
-
+            if (getComprador().billetera.getCantMonedas(100)<21)
+                getComprador().getBilletera().agregarMoneda(getMonedaGen().genMoneda100());
+            else {
+                new Excepciones("No hay espacio para mas monedas de este tipo.");
+            }
             panelBilletera.repintarMonedas();
         }
     }

@@ -33,6 +33,9 @@ public class Comprador {
     public void tomarProducto(Expendedor exp) throws NoHayNadaEnElDepProdException {
         if(exp.depositoProducto == null)
             throw new NoHayNadaEnElDepProdException();
+        else if(inventario.getSize()==5){
+            throw new InventarioLlenoException();
+        }
         else{
             Producto p = exp.depositoProducto;
             exp.depositoProducto = null;

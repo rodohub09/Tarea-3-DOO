@@ -1,5 +1,6 @@
 package Vistas;
 
+import Modelos.InventarioLlenoException;
 import Modelos.NoHayNadaEnElDepProdException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,9 @@ public class BotonRecogerProducto extends JButton {
                 getComprador().tomarProducto(getExpendedor());
             } catch (NoHayNadaEnElDepProdException e) {
                 new Excepciones("No hay nada que recoger en el deposito de productos comprados.");
-            }finally {
+            }catch (InventarioLlenoException e){
+                new Excepciones("Tienes el inventario lleno!.");
+            } finally {
                 Ventana.actualizar();
             }
         }
