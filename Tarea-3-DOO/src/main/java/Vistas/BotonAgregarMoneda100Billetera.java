@@ -29,7 +29,7 @@ public class BotonAgregarMoneda100Billetera extends JButton {
         public void actionPerformed(ActionEvent ae) {
             getComprador().getBilletera().agregarMoneda(getMonedaGen().genMoneda100());
 
-            boton.repintarMonedas();
+            panelBilletera.repintarMonedas();
         }
     }
 }

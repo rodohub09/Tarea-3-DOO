@@ -10,14 +10,12 @@ public class PanelPrincipal extends JPanel {
         super();
         setSize(730, 710);
         setLayout(null);
-        exp = new PanelExpendedor();
-        com = new PanelComprador();
         this.setBackground(Color.white);
+
+        com = new PanelComprador();
+        exp = new PanelExpendedor(com.getBilletera());
+
         add(com);
         add(exp);
     }
-
 }
-
-
-

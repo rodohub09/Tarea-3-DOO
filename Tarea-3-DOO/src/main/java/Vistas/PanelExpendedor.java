@@ -17,15 +17,17 @@ public class PanelExpendedor extends JPanel {
     protected Image image;
     private Caracteres saldo;
 
-    public PanelExpendedor() {
+    public PanelExpendedor(PanelBilletera panelBilletera) {
         super();
         setSize(730, 710);
         setLayout(null);
+
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Expendedor.png")).getImage();
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen del expendedor.");
         }
+
         coca = new PanelCoca();
         fanta = new PanelFanta();
         sprite = new PanelSprite();
@@ -35,39 +37,39 @@ public class PanelExpendedor extends JPanel {
         coca.setBounds(205,100,220,100);
         setComponentZOrder(coca, 0);
         add(coca);
-        BotonRefillDeposito refillcoca = new BotonRefillDeposito(Productos.CocaCola);
-        refillcoca.setBounds(175,100,240,100);
-        add(refillcoca);
+        add(new BotonRefillDeposito(Productos.CocaCola) {{
+            setBounds(175,100,240,100);
+        }});
 
         fanta.setBounds(205,200,220,100);
         setComponentZOrder(fanta, 1);
         add(fanta);
-        BotonRefillDeposito refillfanta = new BotonRefillDeposito(Productos.Fanta);
-        refillfanta.setBounds(175,200,240,100);
-        add(refillfanta);
+        add(new BotonRefillDeposito(Productos.Fanta) {{
+            setBounds(175,200,240,100);
+        }});
 
         sprite.setBounds(205,300,220,100);
         setComponentZOrder(sprite, 2);
         add(sprite);
-        BotonRefillDeposito refillsprite = new BotonRefillDeposito(Productos.Sprite);
-        refillsprite.setBounds(175,300,240,100);
-        add(refillsprite);
+        add(new BotonRefillDeposito(Productos.Sprite) {{
+            setBounds(175,300,240,100);
+        }});
 
         super8.setBounds(205,415,220,100);
         setComponentZOrder(super8, 3);
         add(super8);
-        BotonRefillDeposito refillsuper8 = new BotonRefillDeposito(Productos.Super8);
-        refillsuper8.setBounds(175,400,240,100);
-        add(refillsuper8);
+        add(new BotonRefillDeposito(Productos.Super8) {{
+            setBounds(175,400,240,100);
+        }});
 
         snickers.setBounds(205,515,220,100);
         setComponentZOrder(snickers, 4);
         add(snickers);
-        BotonRefillDeposito refillsnickers = new BotonRefillDeposito(Productos.Snickers);
-        refillsnickers.setBounds(175,500,240,100);
-        add(refillsnickers);
+        add(new BotonRefillDeposito(Productos.Snickers) {{
+            setBounds(175,500,240,100);
+        }});
 
-        JButton bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"));
+        JButton bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"), panelBilletera);
         bv.setBounds(450,470,20,20);
         add(bv);
 
@@ -93,8 +95,6 @@ public class PanelExpendedor extends JPanel {
         añadirCaracteres("$" + Productos.Sprite.getPrecio(),272,378,50,30,Color.WHITE,16.0F);
         añadirCaracteres("$" + Productos.Super8.getPrecio(),272,478,50,30,Color.WHITE,16.0F);
         añadirCaracteres("$" + Productos.Snickers.getPrecio(),272,578,50,30,Color.WHITE,16.0F);
-
-
     }
 
     @Override

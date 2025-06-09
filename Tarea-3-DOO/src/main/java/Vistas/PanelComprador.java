@@ -67,4 +67,8 @@ public class PanelComprador extends JPanel {
             return bcspn;
         }
     }
+
+    public PanelBilletera getBilletera() {
+        return billetera;
+    }
 }
