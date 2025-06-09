@@ -65,7 +65,6 @@ public class PanelBilletera extends JPanel {
         Comprador comprador = getComprador();
         Billetera billetera = comprador.getBilletera();
 
-        System.out.println("Monedas en billetera: " + billetera.getMonedas().size());
         for (Moneda m : billetera.getMonedas()) {
             ImageIcon icono = obtenerIconoParaMoneda(m);
             JButton botonMoneda = new JButton(icono);
@@ -97,6 +96,7 @@ public class PanelBilletera extends JPanel {
 
             botonMoneda.addActionListener(e -> {
                 try {
+                    System.out.println("Serie de la moneda ingresada: "+ m.getSerie());
                     expendedor.ingresarMoneda(m);
                     billetera.removerMoneda(m);
                     this.repintarMonedas();
