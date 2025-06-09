@@ -156,21 +156,21 @@ public class Expendedor {
                     while(coca.getDep().size()<totalp)
                         coca.addItem(new CocaCola());}
             case 2 -> {
-                if(fanta.getDep().isEmpty())
-                    while(fanta.getDep().size()<totalp)
-                        fanta.addItem(new Fanta());}
-            case 3 -> {
                 if(sprite.getDep().isEmpty())
                     while(sprite.getDep().size()<totalp)
-                        sprite.addItem(new Sprite());}
+                        sprite.addItem(new Fanta());}
+            case 3 -> {
+                if(fanta.getDep().isEmpty())
+                    while(fanta.getDep().size()<totalp)
+                        fanta.addItem(new Sprite());}
             case 4 -> {
-                if(super8.getDep().isEmpty())
-                    while(super8.getDep().size()<totalp)
-                        super8.addItem(new Super8());}
-            case 5 -> {
                 if(snickers.getDep().isEmpty())
                     while(snickers.getDep().size()<totalp)
-                        snickers.addItem(new Snickers());}
+                        snickers.addItem(new Super8());}
+            case 5 -> {
+                if(super8.getDep().isEmpty())
+                    while(super8.getDep().size()<totalp)
+                        super8.addItem(new Snickers());}
             default -> {
             }
         }
