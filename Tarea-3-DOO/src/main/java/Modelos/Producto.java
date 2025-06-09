@@ -10,8 +10,8 @@ public abstract class Producto {
     /**
      * Tipo de producto {@link Productos}
      */
-
     protected Productos tipo;
+    /** Serie del {@link Producto}.*/
     protected String serie;
 
     /**Constructor
@@ -30,10 +30,18 @@ public abstract class Producto {
         return tipo.name();
     }
 
+    /**
+     * Getter del tipo de {@link Producto}.
+     * @return Tipo de producto.
+     */
     public Productos getTipo(){
         return this.tipo;
     }
 
+    /**
+     * Getter de la serie del {@link Producto}.
+     * @return Serie del producto.
+     */
     public String getSerie() {
         return serie;
     }

@@ -9,16 +9,24 @@ import java.util.ArrayList;
 import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Panel gráfico que representa la {@link Billetera} donde se muestran las {@link Moneda} del {@link Comprador}.
+ * Permite agregar visualmente monedas, repintarlas y manejar su interacción.
+ */
 public class PanelBilletera extends JPanel {
-    protected Image image;
-    private ArrayList<JLabel> monedas;
 
+    /** Imagen de fondo que representa la billetera */
+    protected Image image;
+
+    /**
+     * Constructor que inicializa el panel, configura su tamaño y carga la imagen de fondo.
+     * En caso de error al cargar la imagen, se muestra un mensaje de error.
+     */
     public PanelBilletera() {
         super();
         setLayout(null);
         setBounds(0, 0, 140, 680);
         setOpaque(false);
-        monedas = new ArrayList<>();
 
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Billetera.png")).getImage();
@@ -27,27 +35,24 @@ public class PanelBilletera extends JPanel {
         }
     }
 
+    /**
+     * Pinta el componente incluyendo la imagen de fondo de la {@link Billetera}.
+     *
+     * @param g objeto para dibujar el componente.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image,0,0 ,null);
+        g.drawImage(image, 0, 0, null);
     }
 
-    public void agregarMoneda(ImageIcon icon, int x, int y) {
-        if (icon == null) {
-            System.out.println("icono null");
-            return;
-        }
-
-        JLabel moneda = new JLabel(icon);
-        moneda.setBounds(x, y, icon.getIconWidth(), icon.getIconHeight());
-
-        monedas.add(moneda);
-        this.add(moneda);
-        repaint();
-        revalidate();
-    }
-
+    /**
+     * Repinta todas las {@link Moneda} de la {@link Billetera} en el panel.
+     * Organiza las monedas por su valor (1000, 500, 100) en columnas y filas.
+     * Cada {@link Moneda} es representada por un botón sin decoración que permite ingresar la {@link Moneda}
+     * al {@link Expendedor} al hacer clic.
+     * Actualiza la interfaz tras cada acción.
+     */
     protected void repintarMonedas() {
         this.removeAll();
 
@@ -96,7 +101,7 @@ public class PanelBilletera extends JPanel {
 
             botonMoneda.addActionListener(e -> {
                 try {
-                    System.out.println("Serie de la moneda ingresada: "+ m.getSerie());
+                    System.out.println("Serie de la moneda ingresada: " + m.getSerie());
                     expendedor.ingresarMoneda(m);
                     billetera.removerMoneda(m);
                     this.repintarMonedas();
@@ -112,6 +117,13 @@ public class PanelBilletera extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Obtiene el icono correspondiente a una {@link Moneda} según su valor.
+     * Busca un recurso con el nombre "Mini(valor).png".
+     *
+     * @param m Moneda para la cual se quiere obtener el ícono.
+     * @return Imagen que representa gráficamente la moneda.
+     */
     private ImageIcon obtenerIconoParaMoneda(Moneda m) {
         String nombreArchivo = "Mini" + m.getValor() + ".png";
         return new ImageIcon(getClass().getClassLoader().getResource(nombreArchivo));

@@ -5,8 +5,13 @@ package Modelos;
  * Ocupa la interfaz {@link Moneda}
  * */
 public abstract class Moneda implements Comparable<Moneda> {
+    /** Serie de la moneda.*/
     protected int serie;
 
+    /**
+     * Constructor de {@link Moneda}.
+     * @param serie Número de serie de la moneda.
+     */
     public Moneda(int serie){
         this.serie = serie;
     }
@@ -27,7 +32,7 @@ public abstract class Moneda implements Comparable<Moneda> {
     /**
      * Metodo de la interfaz {@link Comparable} con overriding, que compara los valores
      * de 2 monedas.
-     * @param {@link Moneda} que se quiera comparar.
+     * @param moneda {@link Moneda} que se quiera comparar.
      * @return Si el valor de la instancia de moneda con la cual se comunica el metodo
      * es mayor, menor o igual a la del parametro.
      * */
