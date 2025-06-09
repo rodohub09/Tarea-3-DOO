@@ -31,6 +31,7 @@ public class Comprador {
         billetera.agregarMoneda(getMonedaGen().genMoneda100());
         billetera.agregarMoneda(getMonedaGen().genMoneda100());
         billetera.agregarMoneda(getMonedaGen().genMoneda100());
+        billetera.agregarMoneda(getMonedaGen().genMoneda100());
     }
 
     /**
