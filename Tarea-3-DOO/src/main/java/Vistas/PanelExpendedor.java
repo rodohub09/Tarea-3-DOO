@@ -15,6 +15,7 @@ public class PanelExpendedor extends JPanel {
     private PanelSuper8 super8;
     private PanelSnickers snickers;
     protected Image image;
+    protected Image producto;
     private Caracteres saldo;
 
     public PanelExpendedor(PanelBilletera panelBilletera) {
@@ -27,7 +28,7 @@ public class PanelExpendedor extends JPanel {
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen del expendedor.");
         }
-
+        setProducto();
         coca = new PanelCoca();
         fanta = new PanelFanta();
         sprite = new PanelSprite();
@@ -102,6 +103,9 @@ public class PanelExpendedor extends JPanel {
         super.paintComponent(g);
         g.drawImage(image,0, 0,null);
         saldo.setCaracteres("$" + getExpendedor().getSaldo());
+        setProducto();
+        if(producto!=null)
+            g.drawImage(producto,262,605,this);
     }
 
     private void añadirBotonComprar(Productos p,int x, int y, int w, int h, String s){
@@ -117,5 +121,17 @@ public class PanelExpendedor extends JPanel {
         car.setVerticalAlignment(SwingConstants.CENTER);
         car.setForeground(c);
         add(car);
+    }
+
+    private void setProducto(){
+        if (getExpendedor().getTipoProducto()!=null) {
+            try {
+                producto = new ImageIcon(getClass().getClassLoader().getResource(getExpendedor().getTipoProducto().getFotodep())).getImage();
+            } catch (Exception e) {
+                System.out.println("Error al cargar la imagen del producto.");
+            }
+        }
+        else
+            producto = null;
     }
 }
