@@ -9,7 +9,6 @@ public class PanelCoca extends JPanel {
 
     public PanelCoca() {
         super();
-        setSize(730, 710);
         setOpaque(false);
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("CocaCola.png")).getImage();

@@ -9,7 +9,6 @@ public class PanelFanta extends JPanel {
 
     public PanelFanta() {
         super();
-        setSize(730, 710);
         setOpaque(false);
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
