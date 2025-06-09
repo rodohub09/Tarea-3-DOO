@@ -2,6 +2,9 @@ package Vistas;
 
 import javax.swing.*;
 
+/**
+ * Este panel dibuja una imagen de los botones que generan monedas en el inventario.
+ */
 public class PanelMonedas extends JPanel {
     public PanelMonedas(PanelBilletera panelBilletera, BotonAgregarSaldo botonAgregarSaldo) {
         super();

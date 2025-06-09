@@ -14,11 +14,20 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import static Modelos.Comprador.getComprador;
 
-
+/**
+ * Boton que consume un {@link Modelos.Producto} del inventario del {@link Modelos.Comprador}
+ * */
 public class BotonConsumir extends JButton {
+    /**
+     * Variable correspondiente al indice del inventario.
+     */
     int i;
+    /**
+     * Variable correspondiente al nombre del sonido al consumir un producto.
+     */
     String s;
-    public BotonConsumir(int i, String s){
+
+    public BotonConsumir(int i, String s) {
         super(new ImageIcon());
         this.addActionListener(new oyenteBoton());
         this.i = i;
@@ -27,27 +36,38 @@ public class BotonConsumir extends JButton {
         setContentAreaFilled(false);
         setBorderPainted(false);
     }
+
+    /**
+     * Metodo encargado de ejecutar la accion del boton, que en este caso, es consumir el producto, imprimir en la terminal el numero de serie de este y ademas reproducir un sonido.
+     */
     private class oyenteBoton implements ActionListener {
         Inventario inventario = getComprador().inventario;
 
-        public void actionPerformed(ActionEvent ae){
+        public void actionPerformed(ActionEvent ae) {
             try {
                 Producto producto = inventario.getProducto(i);
                 inventario.consumirProducto(producto);
                 System.out.println("Serie: " + producto.getSerie());
                 reproducirSonido(s);
                 Ventana.actualizar();
-            }
-            catch (IndexOutOfBoundsException | NullPointerException e){
+            } catch (IndexOutOfBoundsException | NullPointerException e) {
 
             }
         }
     }
 
+    /**
+     * Setter de sonido.
+     * @param s Nombre de archivo.
+     * */
     public void setSonido(String s){
         this.s = s;
     }
 
+    /**
+     * Metodo que reproduce el respectivo sonido.
+     * @param s Nombre de archivo.
+     * */
     private void reproducirSonido(String s){
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResource(s));

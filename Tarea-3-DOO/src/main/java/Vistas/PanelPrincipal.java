@@ -2,6 +2,9 @@ package Vistas;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * Este vendria siendo la clase que, como dice su nombre, es el panel principal donde los demas paneles se colocan encima.
+ * */
 public class PanelPrincipal extends JPanel {
     private PanelComprador com;
     private PanelExpendedor exp;

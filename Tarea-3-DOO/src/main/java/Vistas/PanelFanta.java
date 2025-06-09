@@ -4,8 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Este panel dibuja una imagen repetida de "Fanta" en función de la cantidad
+ * disponible en el stock del expendedor.
+ */
 public class PanelFanta extends JPanel {
+    /**
+     * La imagen que representa una unidad de "Fanta" que será dibujada en el panel.
+     */
     protected Image image;
+
 
     public PanelFanta() {
         super();

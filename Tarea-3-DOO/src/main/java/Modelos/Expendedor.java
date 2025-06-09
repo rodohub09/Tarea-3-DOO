@@ -17,6 +17,9 @@ public class Expendedor {
     protected Deposito<Bebida> fanta;
     protected Deposito<Dulce> snickers;
     protected Deposito<Dulce> super8;
+    /**
+     * Variables de {@link Deposito} encargadas de almacenar {@link Moneda}s, ya sea el vuelto que se entrega o las que ocupa {@link Comprador}
+     * */
     protected Deposito<Moneda> monVu;
     private Deposito<Moneda> monedas;
     protected Producto depositoProducto;
@@ -24,7 +27,7 @@ public class Expendedor {
     private int totalp;
 
     /**
-     * Constructor
+     * Constructor privado puesto que es un singleton.
      * @param stock cantidad de {@link Producto} que pueden almacenar los depositos del expendedor.
      * */
     private Expendedor(int stock){
@@ -48,6 +51,10 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Metodo que se encarga de crear un expendedor unico y posteriormente retornarlo.
+     * @return expendedor en accion.
+     * */
     public static Expendedor getExpendedor() {
         if (expendedor == null)
             expendedor = new Expendedor(8);
@@ -94,6 +101,12 @@ public class Expendedor {
         depositoProducto = product;
     }
 
+    /**
+     *Getter de un {@link Producto} de la maquina.
+     * @param p Cual de todos los {@link Productos} debe entregar el {@link Expendedor}.
+     * @throws NoHayVueltoException Sucede al no haber vuelto en el deposito de vuelto.
+     * @return Producto que se selecciono.
+     * */
     private Producto getProducto(Productos p) throws NoHayProductoException {
         Producto product = null;
         switch (p.getOpcion()) {
@@ -111,6 +124,11 @@ public class Expendedor {
         return product;
     }
 
+    /**
+     * Metodo que ingresa una moneda al {@link Expendedor}, para poder comprar.
+     * @param m {@link Moneda} ingresada como metodo de pago.
+     * @throws PagoIncorrectoException No se coloco un metodo de pago valido (Cualquier dato que no sea una moneda).
+     * */
     public void ingresarMoneda(Moneda m) throws PagoIncorrectoException{
         if(m == null)
             throw new PagoIncorrectoException();
@@ -119,34 +137,67 @@ public class Expendedor {
         monedas.addItem(m);
     }
 
+    /**
+     * Getter del deposito de monedas de vuelto.
+     * @return Deposito de monedas de vuelto.
+     * */
     public ArrayList getMonVu(){
         return monVu.getDep();
     }
 
+    /**
+     * Getter del stock de un {@link Deposito}.
+     * @param dep {@link Deposito}
+     * @return Cantidad de elementos dentro del {@link Deposito}.
+     * */
     public int getStock(Deposito dep){
         return dep.getDep().size();
     }
 
+    /**
+     * Getter del {@link Deposito} de {@link CocaCola}.
+     * @return Deposito de {@link CocaCola}.
+     * */
     public Deposito<Bebida> getCoca() {
         return coca;
     }
 
+    /**
+     * Getter del {@link Deposito} de {@link Fanta}.
+     * @return Deposito de {@link Fanta}.
+     * */
     public Deposito<Bebida> getFanta() {
         return fanta;
     }
 
+    /**
+     * Getter del {@link Deposito} de {@link Sprite}.
+     * @return Deposito de {@link Sprite}.
+     * */
     public Deposito<Bebida> getSprite() {
         return sprite;
     }
 
+    /**
+     * Getter del {@link Deposito} de {@link Super8}.
+     * @return Deposito de {@link Super8}.
+     * */
     public Deposito<Dulce> getSuper8() {
         return super8;
     }
 
+    /**
+     * Getter del {@link Deposito} de {@link Snickers}.
+     * @return Deposito de {@link Snickers}.
+     * */
     public Deposito<Dulce> getSnickers() {
         return snickers;
     }
 
+    /**
+     * Metodo encargado de rellenar un respectivo {@link Deposito}
+     * @param productos que se relleneran, en su respectivo {@link Deposito}.
+     * */
     public void refillDeposito(Productos productos) {
 
         switch (productos.getOpcion()) {
@@ -175,6 +226,10 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Getter del tipo de producto.
+     * @return tipo de producto.
+     * */
     public Productos getTipoProducto(){
         if(depositoProducto!=null)
             return depositoProducto.getTipo();
@@ -182,6 +237,10 @@ public class Expendedor {
             return null;
     }
 
+    /**
+     * Getter del saldo que se dispone, puesto que se ingreso esa cantidad en la expendedora, para comprar.
+     * @return saldo.
+     * */
     public String getSaldo(){
         return String.valueOf(saldo);
     }

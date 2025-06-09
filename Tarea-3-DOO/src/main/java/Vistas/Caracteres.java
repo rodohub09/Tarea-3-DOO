@@ -4,7 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * Clase que es ocupada para insertar caracteres en el {@link PanelExpendedor}
+ * */
 public class Caracteres extends JLabel {
+    /**
+     * Variable que contiene la fuente de los caracteres.
+     * */
     private Font f;
 
     public Caracteres(String s, Float fl){
@@ -20,6 +26,10 @@ public class Caracteres extends JLabel {
         }
     }
 
+    /**
+     * Setter de los caracteres que contiene.
+     * @param s Nuevo String
+     * */
     public void setCaracteres(String s){
         super.setText(s);
     }

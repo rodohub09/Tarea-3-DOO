@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Boton que rellena el {@link Modelos.Deposito} con sus respectivos {@link Productos}.
+ * */
 public class BotonRefillDeposito extends JButton {
     public BotonRefillDeposito(Productos p){
         super();
