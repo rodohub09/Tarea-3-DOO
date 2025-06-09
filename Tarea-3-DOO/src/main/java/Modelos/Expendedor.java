@@ -46,7 +46,6 @@ public class Expendedor {
             snickers.addItem(new Snickers());
             super8.addItem(new Super8());
         }
-        saldo = 1000;
     }
 
     public static Expendedor getExpendedor() {

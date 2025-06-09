@@ -94,8 +94,8 @@ public class PanelExpendedor extends JPanel {
         añadirCaracteres("$" + Productos.CocaCola.getPrecio(),272,178,50,30,Color.WHITE,16.0F);
         añadirCaracteres("$" + Productos.Fanta.getPrecio(),272,278,50,30,Color.WHITE,16.0F);
         añadirCaracteres("$" + Productos.Sprite.getPrecio(),272,378,50,30,Color.WHITE,16.0F);
-        añadirCaracteres("$" + Productos.Super8.getPrecio(),272,478,50,30,Color.WHITE,16.0F);
-        añadirCaracteres("$" + Productos.Snickers.getPrecio(),272,578,50,30,Color.WHITE,16.0F);
+        añadirCaracteres("$" + Productos.Snickers.getPrecio(),272,478,50,30,Color.WHITE,16.0F);
+        añadirCaracteres("$" + Productos.Super8.getPrecio(),272,578,50,30,Color.WHITE,16.0F);
     }
 
     @Override

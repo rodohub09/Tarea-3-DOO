@@ -38,7 +38,8 @@ public class BotonConsumir extends JButton {
                 reproducirSonido(s);
                 Ventana.actualizar();
             }
-            catch (IndexOutOfBoundsException e){
+            catch (IndexOutOfBoundsException | NullPointerException e){
+
             }
         }
     }

@@ -11,8 +11,7 @@ public class Comprador {
     public Inventario inventario = new Inventario(5);
 
     private Comprador() {
-        inventario.agregarProducto(new CocaCola());
-        inventario.agregarProducto(new Super8());
+
     }
 
     public static Comprador getComprador(){
