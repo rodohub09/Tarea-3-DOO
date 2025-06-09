@@ -64,7 +64,11 @@ public class Expendedor {
      * @throws PagoInsuficienteException Lanza esta excepción, al entregar una moneda con valor <b>menor</b> al precio del producto seleccionado.
      * @throws NoHayProductoException Lanza esta excepcion, al intentar comprar un producto el cual <b>ya no tiene stock.</b>
      * */
-    public void comprarProducto(Productos p) throws PagoInsuficienteException,NoHayProductoException {
+    public void comprarProducto(Productos p) throws PagoInsuficienteException,NoHayProductoException,DepositoProductoLlenoException {
+        if (depositoProducto!=null){
+            throw new DepositoProductoLlenoException();
+        }
+
         if (this.saldo < p.getPrecio()) {
             throw new PagoInsuficienteException();
         }
@@ -145,12 +149,28 @@ public class Expendedor {
     }
 
     public void refillDeposito(Productos productos) {
+
         switch (productos.getOpcion()) {
-            case 1 -> {while(coca.getDep().size()<totalp) coca.addItem(new CocaCola());}
-            case 2 -> {while(fanta.getDep().size()<totalp) fanta.addItem(new Fanta());}
-            case 3 -> {while(sprite.getDep().size()<totalp) sprite.addItem(new Sprite());}
-            case 4 -> {while(super8.getDep().size()<totalp) super8.addItem(new Super8());}
-            case 5 -> {while(snickers.getDep().size()<totalp) snickers.addItem(new Snickers());}
+            case 1 -> {
+                if(coca.getDep().isEmpty())
+                    while(coca.getDep().size()<totalp)
+                        coca.addItem(new CocaCola());}
+            case 2 -> {
+                if(fanta.getDep().isEmpty())
+                    while(fanta.getDep().size()<totalp)
+                        fanta.addItem(new Fanta());}
+            case 3 -> {
+                if(sprite.getDep().isEmpty())
+                    while(sprite.getDep().size()<totalp)
+                        sprite.addItem(new Sprite());}
+            case 4 -> {
+                if(super8.getDep().isEmpty())
+                    while(super8.getDep().size()<totalp)
+                        super8.addItem(new Super8());}
+            case 5 -> {
+                if(snickers.getDep().isEmpty())
+                    while(snickers.getDep().size()<totalp)
+                        snickers.addItem(new Snickers());}
             default -> {
             }
         }

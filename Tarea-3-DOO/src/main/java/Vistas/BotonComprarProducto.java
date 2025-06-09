@@ -1,5 +1,6 @@
 package Vistas;
 
+import Modelos.DepositoProductoLlenoException;
 import Modelos.NoHayProductoException;
 import Modelos.PagoInsuficienteException;
 import Modelos.Productos;
@@ -32,7 +33,10 @@ public class BotonComprarProducto extends JButton {
                 new Excepciones("No tienes saldo suficiente para comprar este producto.");
             } catch (NoHayProductoException e) {
                 new Excepciones("No queda stock de este producto.");
+            } catch (DepositoProductoLlenoException e) {
+                new Excepciones("Retire el producto antes de comprar nuevamente.");
             }
+
             Ventana.getInstance().repaint();
         }
     }

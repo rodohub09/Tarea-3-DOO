@@ -26,6 +26,7 @@ public class BotonVuelto extends JButton {
                 new Excepciones("No hay vuelto que recoger en el deposito, espero no te esten estafando.");
             }else{
                 getComprador().tomarVuelto(getExpendedor());
+                Ventana.getInstance().repaint();
             }
         }
     }
