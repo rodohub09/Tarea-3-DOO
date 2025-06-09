@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.time.Instant;
+import java.util.Random;
 
 /**
  *Clase de los productos que estaran en el expendedor
@@ -12,14 +13,14 @@ public abstract class Producto {
      */
     protected Productos tipo;
     /** Serie del {@link Producto}.*/
-    protected String serie;
+    protected int serie;
 
     /**Constructor
     *@param tipo de producto.
     */
     public Producto(Productos tipo){
         this.tipo = tipo;
-        this.serie = Instant.now().toString();
+        this.serie = new Random().nextInt();
     }
 
     /**
@@ -42,7 +43,7 @@ public abstract class Producto {
      * Getter de la serie del {@link Producto}.
      * @return Serie del producto.
      */
-    public String getSerie() {
+    public int getSerie() {
         return serie;
     }
 
