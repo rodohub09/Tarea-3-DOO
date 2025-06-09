@@ -3,7 +3,6 @@ package Vistas;
 import javax.swing.*;
 import java.awt.*;
 import static Modelos.Expendedor.getExpendedor;
-import Modelos.Productos;
 
 public class PanelSuper8 extends JPanel {
     protected Image image;
@@ -14,7 +13,7 @@ public class PanelSuper8 extends JPanel {
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();
         } catch (Exception e) {
-            System.out.println("Error al cargar imagen CocaCola.png");
+            System.out.println("Error al cargar imagen Super8.png");
         }
     }
 

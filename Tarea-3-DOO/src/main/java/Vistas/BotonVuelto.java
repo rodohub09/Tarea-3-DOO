@@ -4,10 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.ArrayList;
-
-import Modelos.*;
-
 import static Modelos.Expendedor.getExpendedor;
 import static Modelos.Comprador.getComprador;
 
@@ -30,7 +26,7 @@ public class BotonVuelto extends JButton {
                 new Excepciones("No hay vuelto que recoger en el deposito, espero no te esten estafando.");
             } else {
                 getComprador().tomarVuelto(getExpendedor());
-                Ventana.getInstance().repaint();
+                Ventana.actualizar();
                 panelBilletera.repintarMonedas();
             }
         }

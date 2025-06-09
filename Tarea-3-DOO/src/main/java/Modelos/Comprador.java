@@ -1,7 +1,5 @@
 package Modelos;
 
-import java.util.ArrayList;
-
 /**
  * Clase que representara a quien interactua con el {@link Expendedor}, intentando comprar un {@link Producto}.
  * */

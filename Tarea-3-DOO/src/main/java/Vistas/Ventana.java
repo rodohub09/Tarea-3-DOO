@@ -1,7 +1,6 @@
 package Vistas;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Ventana extends JFrame {
     private static Ventana instancia;

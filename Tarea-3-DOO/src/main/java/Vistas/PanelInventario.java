@@ -14,7 +14,7 @@ public class PanelInventario extends JPanel {
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Inventario.png")).getImage();
         } catch (Exception e) {
-            System.out.println("Error al cargar la imagen del expendedor.");
+            System.out.println("Error al cargar la imagen Inventario.png.");
         }
     }
 
