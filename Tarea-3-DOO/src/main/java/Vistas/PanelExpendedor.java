@@ -37,37 +37,37 @@ public class PanelExpendedor extends JPanel {
         coca.setBounds(205,100,220,100);
         setComponentZOrder(coca, 0);
         add(coca);
-        add(new BotonRefillDeposito(Productos.CocaCola) {{
-            setBounds(175,100,240,100);
-        }});
+        BotonRefillDeposito refillcoca = new BotonRefillDeposito(Productos.CocaCola);
+        refillcoca.setBounds(175,100,240,100);
+        add(refillcoca);
 
         fanta.setBounds(205,200,220,100);
         setComponentZOrder(fanta, 1);
         add(fanta);
-        add(new BotonRefillDeposito(Productos.Fanta) {{
-            setBounds(175,200,240,100);
-        }});
+        BotonRefillDeposito refillfanta = new BotonRefillDeposito(Productos.Fanta);
+        refillfanta.setBounds(175,200,240,100);
+        add(refillfanta);
 
         sprite.setBounds(205,300,220,100);
         setComponentZOrder(sprite, 2);
         add(sprite);
-        add(new BotonRefillDeposito(Productos.Sprite) {{
-            setBounds(175,300,240,100);
-        }});
+        BotonRefillDeposito refillsprite = new BotonRefillDeposito(Productos.Sprite);
+        refillsprite.setBounds(175,300,240,100);
+        add(refillsprite);
 
         super8.setBounds(205,415,220,100);
         setComponentZOrder(super8, 3);
         add(super8);
-        add(new BotonRefillDeposito(Productos.Super8) {{
-            setBounds(175,400,240,100);
-        }});
+        BotonRefillDeposito refillsuper8 = new BotonRefillDeposito(Productos.Super8);
+        refillsuper8.setBounds(175,400,240,100);
+        add(refillsuper8);
 
         snickers.setBounds(205,515,220,100);
         setComponentZOrder(snickers, 4);
         add(snickers);
-        add(new BotonRefillDeposito(Productos.Snickers) {{
-            setBounds(175,500,240,100);
-        }});
+        BotonRefillDeposito refillsnickers = new BotonRefillDeposito(Productos.Snickers);
+        refillsnickers.setBounds(175,500,240,100);
+        add(refillsnickers);
 
         JButton bv = new BotonVuelto(getClass().getClassLoader().getResource("Vuelto.png"), panelBilletera);
         bv.setBounds(450,470,20,20);
