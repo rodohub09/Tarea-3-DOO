@@ -3,13 +3,13 @@ package Vistas;
 import javax.swing.*;
 import java.awt.*;
 import static Modelos.Expendedor.getExpendedor;
+import Modelos.Productos;
 
 public class PanelSuper8 extends JPanel {
     protected Image image;
 
     public PanelSuper8() {
         super();
-        setSize(730, 710);
         setOpaque(false);
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();

@@ -22,6 +22,7 @@ public class BotonRefillDeposito extends JButton {
 
         public void actionPerformed(ActionEvent ae){
             getExpendedor().refillDeposito(p);
+            Ventana.getInstance().revalidate();
             Ventana.getInstance().repaint();
         }
     }

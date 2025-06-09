@@ -9,7 +9,6 @@ public class PanelSprite extends JPanel {
 
     public PanelSprite() {
         super();
-        setSize(730, 710);
         setOpaque(false);
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Sprite.png")).getImage();

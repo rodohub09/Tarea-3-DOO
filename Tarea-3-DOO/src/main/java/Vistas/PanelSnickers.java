@@ -9,7 +9,6 @@ public class PanelSnickers extends JPanel {
 
     public PanelSnickers() {
         super();
-        setSize(730, 710);
         setOpaque(false);
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png")).getImage();
