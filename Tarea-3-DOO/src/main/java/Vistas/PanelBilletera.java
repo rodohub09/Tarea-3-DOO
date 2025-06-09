@@ -1,11 +1,8 @@
 package Vistas;
 
 import Modelos.*;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-
 import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
