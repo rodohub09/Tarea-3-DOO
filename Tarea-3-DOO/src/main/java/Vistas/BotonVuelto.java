@@ -1,5 +1,7 @@
 package Vistas;
 
+import Modelos.Productos;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +9,9 @@ import java.net.URL;
 import static Modelos.Expendedor.getExpendedor;
 import static Modelos.Comprador.getComprador;
 
-
+/**
+ * Boton que agarra el vuelto del {@link Modelos.Deposito} del {@link Modelos.Expendedor}.
+ * */
 public class BotonVuelto extends JButton {
     private PanelBilletera panelBilletera;
 

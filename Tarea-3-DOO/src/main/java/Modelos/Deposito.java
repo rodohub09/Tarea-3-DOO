@@ -30,10 +30,16 @@ public class Deposito<T> {
             return dep.removeFirst();
     }
 
+    /**
+     * Getter del {@link ArrayList} que compone al deposito.
+     * */
     public ArrayList<T> getDep() {
         return dep;
     }
 
+    /**
+     * Metodo encargado de vaciar el deposito.
+     * */
     public void makeEmpty(){
         dep.clear();
     }

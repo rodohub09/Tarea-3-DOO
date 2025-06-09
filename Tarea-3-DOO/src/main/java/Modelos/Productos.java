@@ -50,14 +50,26 @@ public enum Productos {
         return precio;
     }
 
+    /**
+     * Getter de el nombre del render del respectivo {@link Productos}
+     * @return nombre de archivo.
+     * */
     public String getFotoInv(){
         return this.fotoInv;
     }
 
+    /**
+     * Getter de el nombre del sonido que se ejecuta al consumir un respectivo {@link Productos}
+     * @return nombre de archivo.
+     * */
     public String getSonido(){
         return this.sonido;
     }
 
+    /**
+     * Getter de el nombre del render del respectivo {@link Deposito}
+     * @return nombre de archivo.
+     * */
     public String getFotodep() {
         return fotodep;
     }

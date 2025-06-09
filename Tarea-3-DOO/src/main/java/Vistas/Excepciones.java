@@ -2,6 +2,9 @@ package Vistas;
 
 import javax.swing.*;
 
+/**
+ * Clase que se extiende de {@link JDialog}, mostrando una ventana para indicar algunas excepciones.
+ * */
 public class Excepciones extends JDialog {
     public Excepciones(String string){
         super();

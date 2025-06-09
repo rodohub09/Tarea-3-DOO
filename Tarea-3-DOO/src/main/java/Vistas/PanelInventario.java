@@ -5,6 +5,9 @@ import java.awt.*;
 
 import static Modelos.Comprador.getComprador;
 
+/**
+ * Clase encargada del panel del inventario y asi tambien de la cantidad de productos que tiene.
+ * */
 public class PanelInventario extends JPanel {
     protected Image image;
     public PanelInventario(){

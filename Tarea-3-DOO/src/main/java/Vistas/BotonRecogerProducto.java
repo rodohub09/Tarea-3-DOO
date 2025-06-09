@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Boton que recoge el producto del expendedor.
+ * */
 public class BotonRecogerProducto extends JButton {
     public BotonRecogerProducto(){
         super();

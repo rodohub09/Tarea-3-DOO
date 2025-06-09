@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Este panel dibuja una imagen repetida de "Super8" en función de la cantidad
+ * disponible en el stock del expendedor.
+ */
 public class PanelSuper8 extends JPanel {
     protected Image image;
 

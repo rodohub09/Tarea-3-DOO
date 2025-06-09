@@ -12,6 +12,9 @@ import java.net.URL;
 
 import static Modelos.Expendedor.getExpendedor;
 
+/**
+ * Boton para comprar {@link Modelos.Producto} del {@link Modelos.Expendedor}
+ * */
 public class BotonComprarProducto extends JButton {
     public BotonComprarProducto(URL rutaImagen, Productos p){
         super(new ImageIcon(rutaImagen));
@@ -20,6 +23,10 @@ public class BotonComprarProducto extends JButton {
         setContentAreaFilled(false);
         setBorderPainted(false);
     }
+
+    /**
+     * Accion del boton al ser presionado.
+     * */
     private class oyenteBoton implements ActionListener {
         Productos p;
         public oyenteBoton(Productos p){
