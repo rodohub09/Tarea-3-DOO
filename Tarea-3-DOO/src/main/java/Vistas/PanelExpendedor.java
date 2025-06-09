@@ -70,6 +70,10 @@ public class PanelExpendedor extends JPanel {
         bv.setBounds(450,470,20,20);
         add(bv);
 
+        JButton bc = new BotonRecogerProducto();
+        bc.setBounds(250,600,93,46);
+        add(bc);
+
         añadirBotonComprar(Productos.CocaCola,420,255,80,32,"BotonCoca.png");
         añadirBotonComprar(Productos.Fanta,420,297,80,32,"BotonFanta.png");
         añadirBotonComprar(Productos.Sprite,420,337,80,32,"BotonSprite.png");
