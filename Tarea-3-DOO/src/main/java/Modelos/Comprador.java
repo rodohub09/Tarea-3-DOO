@@ -43,27 +43,6 @@ public class Comprador {
         }
     }
 
-    public void ingresarMoneda(Expendedor exp, int valor) throws PagoIncorrectoException {
-        for (Moneda m : billetera.getMonedas()) {
-            if (m.getValor() == valor) {
-                exp.ingresarMoneda(m);
-                return;
-            }
-        }
-    }
-
-    public void ingresarMoneda1000(Expendedor exp) throws PagoIncorrectoException {
-        ingresarMoneda(exp, 1000);
-    }
-
-    public void ingresarMoneda500(Expendedor exp) throws PagoIncorrectoException {
-        ingresarMoneda(exp, 500);
-    }
-
-    public void ingresarMoneda100(Expendedor exp) throws PagoIncorrectoException {
-        ingresarMoneda(exp, 100);
-    }
-
     public Billetera getBilletera() {
         return billetera;
     }

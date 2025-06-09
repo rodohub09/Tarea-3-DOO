@@ -1,4 +1,7 @@
 package Modelos;
+
+import java.time.Instant;
+
 /**
  *Clase de los productos que estaran en el expendedor
  */
@@ -8,13 +11,15 @@ public abstract class Producto {
      * Tipo de producto {@link Productos}
      */
 
-    private Productos tipo;
+    protected Productos tipo;
+    protected String serie;
 
     /**Constructor
     *@param tipo de producto.
     */
     public Producto(Productos tipo){
         this.tipo = tipo;
+        this.serie = Instant.now().toString();
     }
 
     /**
@@ -27,6 +32,10 @@ public abstract class Producto {
 
     public Productos getTipo(){
         return this.tipo;
+    }
+
+    public String getSerie() {
+        return serie;
     }
 
     /**

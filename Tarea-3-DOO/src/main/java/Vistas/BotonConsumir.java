@@ -1,5 +1,8 @@
 package Vistas;
 
+import Modelos.Inventario;
+import Modelos.Producto;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,15 +28,17 @@ public class BotonConsumir extends JButton {
         setBorderPainted(false);
     }
     private class oyenteBoton implements ActionListener {
+        Inventario inventario = getComprador().inventario;
 
         public void actionPerformed(ActionEvent ae){
             try {
-                getComprador().inventario.consumirProducto(i);
+                Producto producto = inventario.getProducto(i);
+                inventario.consumirProducto(producto);
+                System.out.println("Serie: " + producto.getSerie());
                 reproducirSonido(s);
                 Ventana.actualizar();
             }
-            catch(IndexOutOfBoundsException e){
-
+            catch (IndexOutOfBoundsException e){
             }
         }
     }
@@ -43,7 +48,7 @@ public class BotonConsumir extends JButton {
     }
 
     private void reproducirSonido(String s){
-        try{
+        try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResource(s));
             Clip c = AudioSystem.getClip();
             c.open(ais);

@@ -13,8 +13,8 @@ public class Inventario {
         inv.add(p);
     }
 
-    public void consumirProducto(int i) {
-        inv.remove(i);
+    public void consumirProducto(Producto producto) {
+        inv.remove(producto);
     }
 
     public ArrayList<Producto> getInv() {
