@@ -176,6 +176,13 @@ public class Expendedor {
         }
     }
 
+    public Productos getTipoProducto(){
+        if(depositoProducto!=null)
+            return depositoProducto.getTipo();
+        else
+            return null;
+    }
+
     public String getSaldo(){
         return String.valueOf(saldo);
     }

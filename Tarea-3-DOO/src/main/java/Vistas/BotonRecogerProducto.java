@@ -1,11 +1,9 @@
 package Vistas;
 
 import Modelos.NoHayNadaEnElDepProdException;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
@@ -25,7 +23,7 @@ public class BotonRecogerProducto extends JButton {
             } catch (NoHayNadaEnElDepProdException e) {
                 new Excepciones("No hay nada que recoger en el deposito de productos comprados.");
             }finally {
-                Ventana.getInstance().repaint();
+                Ventana.actualizar();
             }
         }
     }

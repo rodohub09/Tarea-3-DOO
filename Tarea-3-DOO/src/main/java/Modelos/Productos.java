@@ -10,11 +10,11 @@ public enum Productos {
      * Propiedades que indican el producto en cuestion, con su numero en la maquina
      * expendedora y su precio.
      * */
-    CocaCola(1, 700,"CocacolaInteractiva.png","gluglu.wav"),
-    Sprite(2, 700,"SpriteInteractiva.png","gluglu.wav"),
-    Fanta(3, 700,"FantaInteractiva.png","gluglu.wav"),
-    Snickers(4, 1000,"SnickersInteractivo.png","namnam.wav"),
-    Super8(5, 400,"Super8Interactivo.png","namnam.wav");
+    CocaCola(1, 700,"CocacolaInteractiva.png","gluglu.wav","Cocacoladep.png"),
+    Sprite(2, 700,"SpriteInteractiva.png","gluglu.wav","Spritedep.png"),
+    Fanta(3, 700,"FantaInteractiva.png","gluglu.wav","Fantadep.png"),
+    Snickers(4, 1000,"SnickersInteractivo.png","namnam.wav","Snickersdep.png"),
+    Super8(5, 400,"Super8Interactivo.png","namnam.wav","Super8dep.png");
 
     /**
      * Variables que indican el precio y la opcion (numero en la maquina expendedora).
@@ -23,13 +23,15 @@ public enum Productos {
     private final int precio;
     private final String fotoInv;
     private final String sonido;
+    private final String fotodep;
 
 
-    Productos (int opcion, int precio, String fotoInv, String sonido) {
+    Productos (int opcion, int precio, String fotoInv, String sonido, String fotodep) {
         this.opcion = opcion;
         this.precio = precio;
         this.fotoInv = fotoInv;
         this.sonido = sonido;
+        this.fotodep = fotodep;
     }
 
     /**
@@ -54,5 +56,9 @@ public enum Productos {
 
     public String getSonido(){
         return this.sonido;
+    }
+
+    public String getFotodep() {
+        return fotodep;
     }
 }

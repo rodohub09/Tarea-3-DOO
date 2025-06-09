@@ -13,7 +13,7 @@ public class PanelFanta extends JPanel {
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
         } catch (Exception e) {
-            System.out.println("Error al cargar imagen CocaCola.png");
+            System.out.println("Error al cargar imagen Fanta.png");
         }
     }
 

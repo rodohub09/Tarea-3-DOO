@@ -36,8 +36,7 @@ public class BotonComprarProducto extends JButton {
             } catch (DepositoProductoLlenoException e) {
                 new Excepciones("Retire el producto antes de comprar nuevamente.");
             }
-
-            Ventana.getInstance().repaint();
+            Ventana.actualizar();
         }
     }
 }

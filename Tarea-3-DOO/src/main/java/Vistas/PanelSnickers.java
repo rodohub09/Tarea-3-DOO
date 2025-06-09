@@ -13,7 +13,7 @@ public class PanelSnickers extends JPanel {
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png")).getImage();
         } catch (Exception e) {
-            System.out.println("Error al cargar imagen CocaCola.png");
+            System.out.println("Error al cargar imagen Snickers.png");
         }
     }
 

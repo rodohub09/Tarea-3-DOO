@@ -1,22 +1,16 @@
 package Vistas;
 
-import Modelos.NoHayProductoException;
-import Modelos.PagoInsuficienteException;
-import Modelos.Productos;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import static Modelos.Comprador.getComprador;
-import static Modelos.Expendedor.getExpendedor;
+
 
 public class BotonConsumir extends JButton {
     int i;
@@ -36,7 +30,7 @@ public class BotonConsumir extends JButton {
             try {
                 getComprador().inventario.consumirProducto(i);
                 reproducirSonido(s);
-                Ventana.getInstance().repaint();
+                Ventana.actualizar();
             }
             catch(IndexOutOfBoundsException e){
 

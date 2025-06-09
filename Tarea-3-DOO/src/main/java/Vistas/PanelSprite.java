@@ -13,7 +13,7 @@ public class PanelSprite extends JPanel {
         try {
             image = new ImageIcon(getClass().getClassLoader().getResource("Sprite.png")).getImage();
         } catch (Exception e) {
-            System.out.println("Error al cargar imagen CocaCola.png");
+            System.out.println("Error al cargar imagen Sprite.png");
         }
     }
 
