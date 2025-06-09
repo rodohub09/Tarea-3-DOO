@@ -1,5 +1,7 @@
 package Modelos;
 
+import static Modelos.MonedaGen.getMonedaGen;
+
 /**
  * Clase que representara a quien interactua con el {@link Expendedor}, intentando comprar un {@link Producto}.
  * */
@@ -20,7 +22,15 @@ public class Comprador {
     public Inventario inventario = new Inventario(5);
 
     private Comprador() {
-
+        billetera.agregarMoneda(getMonedaGen().genMoneda1000());
+        billetera.agregarMoneda(getMonedaGen().genMoneda1000());
+        billetera.agregarMoneda(getMonedaGen().genMoneda1000());
+        billetera.agregarMoneda(getMonedaGen().genMoneda500());
+        billetera.agregarMoneda(getMonedaGen().genMoneda500());
+        billetera.agregarMoneda(getMonedaGen().genMoneda500());
+        billetera.agregarMoneda(getMonedaGen().genMoneda100());
+        billetera.agregarMoneda(getMonedaGen().genMoneda100());
+        billetera.agregarMoneda(getMonedaGen().genMoneda100());
     }
 
     /**
