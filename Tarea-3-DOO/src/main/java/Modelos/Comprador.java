@@ -10,10 +10,11 @@ public class Comprador {
 
     private static Comprador comprador;
     public Billetera billetera = new Billetera();
-    public ArrayList<Producto> inventario = new ArrayList<>();
+    public Inventario inventario = new Inventario(5);
 
     private Comprador() {
-
+        inventario.agregarProducto(new CocaCola());
+        inventario.agregarProducto(new Super8());
     }
 
     public static Comprador getComprador(){
@@ -37,7 +38,7 @@ public class Comprador {
         else{
             Producto p = exp.depositoProducto;
             exp.depositoProducto = null;
-            inventario.add(p);
+            inventario.agregarProducto(p);
         }
     }
 

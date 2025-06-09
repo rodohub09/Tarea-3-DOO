@@ -10,22 +10,26 @@ public enum Productos {
      * Propiedades que indican el producto en cuestion, con su numero en la maquina
      * expendedora y su precio.
      * */
-    CocaCola(1, 700),
-    Sprite(2, 700),
-    Fanta(3, 700),
-    Snickers(4, 1000),
-    Super8(5, 400);
+    CocaCola(1, 700,"CocacolaInteractiva.png","gluglu.wav"),
+    Sprite(2, 700,"SpriteInteractiva.png","gluglu.wav"),
+    Fanta(3, 700,"FantaInteractiva.png","gluglu.wav"),
+    Snickers(4, 1000,"SnickersInteractivo.png","amam.wav"),
+    Super8(5, 400,"Super8Interactivo.png","amam.wav");
 
     /**
      * Variables que indican el precio y la opcion (numero en la maquina expendedora).
      * */
     private final int opcion;
     private final int precio;
+    private final String fotoInv;
+    private final String sonido;
 
 
-    Productos (int opcion, int precio) {
+    Productos (int opcion, int precio, String fotoInv, String sonido) {
         this.opcion = opcion;
         this.precio = precio;
+        this.fotoInv = fotoInv;
+        this.sonido = sonido;
     }
 
     /**
@@ -42,5 +46,9 @@ public enum Productos {
      * */
     public int getPrecio() {
         return precio;
+    }
+
+    public String getFotoInv(){
+        return this.fotoInv;
     }
 }

@@ -24,6 +24,8 @@ public class BotonRecogerProducto extends JButton {
                 getComprador().tomarProducto(getExpendedor());
             } catch (NoHayNadaEnElDepProdException e) {
                 new Excepciones("No hay nada que recoger en el deposito de productos comprados.");
+            }finally {
+                Ventana.getInstance().repaint();
             }
         }
     }

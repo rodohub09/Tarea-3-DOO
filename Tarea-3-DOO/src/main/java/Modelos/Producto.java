@@ -25,6 +25,10 @@ public abstract class Producto {
         return tipo.name();
     }
 
+    public Productos getTipo(){
+        return this.tipo;
+    }
+
     /**
     *Metodo abstracto que devolvera el "sabor" en forma de string del tipo de producto en cuestion.
     */

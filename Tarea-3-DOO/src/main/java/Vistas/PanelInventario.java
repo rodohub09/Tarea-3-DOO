@@ -3,6 +3,8 @@ package Vistas;
 import javax.swing.*;
 import java.awt.*;
 
+import static Modelos.Comprador.getComprador;
+
 public class PanelInventario extends JPanel {
     protected Image image;
     public PanelInventario(){
@@ -20,5 +22,9 @@ public class PanelInventario extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image,540, 160,null);
+        for(int i=0;i<getComprador().inventario.getSize();i++){
+            Image ima = new ImageIcon(getClass().getClassLoader().getResource(getComprador().inventario.getProducto(i).getTipo().getFotoInv())).getImage();
+            g.drawImage(ima,570,170+(i*80),null);
+        }
     }
 }
