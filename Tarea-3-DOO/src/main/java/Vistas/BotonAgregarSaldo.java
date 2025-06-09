@@ -5,81 +5,88 @@ import Modelos.*;
 import javax.swing.*;
 
 public class BotonAgregarSaldo extends JButton {
-    private Moneda moneda;
     private Billetera billetera;
-    private Expendedor expendedor;
     private PanelBilletera panelBilletera;
+    private Expendedor expendedor;
 
-    public BotonAgregarSaldo(Comprador comprador, Expendedor expendedor, PanelBilletera panelBilletera) {
+    public BotonAgregarSaldo(PanelBilletera panelBilletera) {
         super();
-        this.billetera = comprador.getBilletera();
-        this.expendedor = expendedor;
+        this.billetera = Comprador.getComprador().getBilletera();
         this.panelBilletera = panelBilletera;
-        this.moneda = null;
+        this.expendedor = Expendedor.getExpendedor();
 
-        setEnabled(false);
         setFocusPainted(false);
 
-        addActionListener(e -> ingresarMoneda());
+        repintarMonedas();
     }
 
-    public void setMonedaSeleccionada(Moneda moneda) {
-        this.moneda = moneda;
-        setEnabled(moneda != null); // habilita el boton solo si hay una moneda seleccionada.
-    }
+    protected void repintarMonedas() {
+        panelBilletera.removeAll();
 
-    private void ingresarMoneda() {
-        if (moneda != null) {
-            try {
-                expendedor.ingresarMoneda(moneda);
-                billetera.removerMoneda(moneda);
+        int moneda1000_x = 10;
+        int moneda500_x = 50;
+        int moneda100_x = 90;
 
+        int y_inicial = 10;
 
-                // pintar nuevamente las monedas al momento de remover una.
-                int moneda1000_x = 10;
-                int moneda500_x = 50;
-                int moneda100_x = 90;
-                int x = 0;
+        int contador1000 = 0;
+        int contador500 = 0;
+        int contador100 = 0;
 
-                int y = 10;
-                int i = 0;
+        System.out.println("Monedas en billetera: " + billetera.getMonedas().size());
+        for (Moneda m : billetera.getMonedas()) {
+            ImageIcon icono = obtenerIconoParaMoneda(m);
+            JButton botonMoneda = new JButton(icono);
 
-                panelBilletera.removeAll();
+            int x = 0;
+            int y = 0;
 
-                for (Moneda m : billetera.getMonedas()) {
-                    ImageIcon icono = obtenerIconoParaMoneda(m);
-                    JButton botonMoneda = new JButton(icono);
-
-                    switch (m.getValor()) {
-                        case 1000 -> x = moneda1000_x;
-                        case 500 -> x = moneda500_x;
-                        case 100 -> x = moneda100_x;
-                        default -> {
-                        }
-                    }
-
-                    botonMoneda.setBounds(x, y + (i * 30), icono.getIconWidth(), icono.getIconHeight());
-                    botonMoneda.setContentAreaFilled(false);
-                    botonMoneda.setBorderPainted(false);
-                    botonMoneda.addActionListener(e -> setMonedaSeleccionada(m));
-
-                    panelBilletera.add(botonMoneda);
-                    i++;
+            switch (m.getValor()) {
+                case 1000 -> {
+                    x = moneda1000_x;
+                    y = y_inicial + (contador1000 * 30);
+                    contador1000++;
                 }
-                panelBilletera.revalidate();
-                panelBilletera.repaint();
-
-                moneda = null;
-                setEnabled(false);
-            } catch (PagoIncorrectoException e) {
-                moneda = null;
-                setEnabled(false);
+                case 500 -> {
+                    x = moneda500_x;
+                    y = y_inicial + (contador500 * 30);
+                    contador500++;
+                }
+                case 100 -> {
+                    x = moneda100_x;
+                    y = y_inicial + (contador100 * 30);
+                    contador100++;
+                }
             }
+
+            botonMoneda.setBounds(x, y, icono.getIconWidth(), icono.getIconHeight());
+            botonMoneda.setContentAreaFilled(false);
+            botonMoneda.setBorderPainted(false);
+
+            botonMoneda.addActionListener(e -> {
+                try {
+                    expendedor.ingresarMoneda(m);
+                    billetera.removerMoneda(m);
+                    repintarMonedas();
+                } catch (PagoIncorrectoException ex) {
+                    new Excepciones("Error al ingresar moneda.");
+                }
+            });
+
+            panelBilletera.add(botonMoneda);
         }
+
+        panelBilletera.revalidate();
+        panelBilletera.repaint();
     }
 
     private ImageIcon obtenerIconoParaMoneda(Moneda m) {
         String nombreArchivo = "Mini" + m.getValor() + ".png";
         return new ImageIcon(getClass().getClassLoader().getResource(nombreArchivo));
+    }
+
+    public void setPanelBilletera(PanelBilletera panelBilletera) {
+        this.panelBilletera = panelBilletera;
+        repintarMonedas();
     }
 }

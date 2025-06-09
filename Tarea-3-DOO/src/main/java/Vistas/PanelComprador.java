@@ -7,6 +7,7 @@ public class PanelComprador extends JPanel {
     private PanelInventario inventario;
     private PanelBilletera billetera;
     private PanelMonedas monedas;
+    private BotonAgregarSaldo botonAgregarSaldo;
 
     public PanelComprador() {
         super();
@@ -14,9 +15,13 @@ public class PanelComprador extends JPanel {
         setLayout(null);
         setOpaque(false);
 
-        inventario = new PanelInventario();
         billetera = new PanelBilletera();
-        monedas = new PanelMonedas(billetera);
+
+        botonAgregarSaldo = new BotonAgregarSaldo(billetera);
+
+        monedas = new PanelMonedas(billetera, botonAgregarSaldo);
+
+        inventario = new PanelInventario();
 
         add(billetera);
         add(inventario);
