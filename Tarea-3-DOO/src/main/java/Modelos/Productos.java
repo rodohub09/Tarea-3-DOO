@@ -13,8 +13,8 @@ public enum Productos {
     CocaCola(1, 700,"CocacolaInteractiva.png","gluglu.wav"),
     Sprite(2, 700,"SpriteInteractiva.png","gluglu.wav"),
     Fanta(3, 700,"FantaInteractiva.png","gluglu.wav"),
-    Snickers(4, 1000,"SnickersInteractivo.png","amam.wav"),
-    Super8(5, 400,"Super8Interactivo.png","amam.wav");
+    Snickers(4, 1000,"SnickersInteractivo.png","namnam.wav"),
+    Super8(5, 400,"Super8Interactivo.png","namnam.wav");
 
     /**
      * Variables que indican el precio y la opcion (numero en la maquina expendedora).
@@ -50,5 +50,9 @@ public enum Productos {
 
     public String getFotoInv(){
         return this.fotoInv;
+    }
+
+    public String getSonido(){
+        return this.sonido;
     }
 }

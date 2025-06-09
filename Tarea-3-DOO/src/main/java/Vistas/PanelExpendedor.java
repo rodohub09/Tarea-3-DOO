@@ -5,6 +5,7 @@ import Modelos.Productos;
 import javax.swing.*;
 import java.awt.*;
 
+import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
 public class PanelExpendedor extends JPanel {
@@ -93,9 +94,6 @@ public class PanelExpendedor extends JPanel {
         añadirCaracteres("$" + Productos.Super8.getPrecio(),272,478,50,30,Color.WHITE,16.0F);
         añadirCaracteres("$" + Productos.Snickers.getPrecio(),272,578,50,30,Color.WHITE,16.0F);
 
-        JButton bc2 = new BotonConsumir(0,"gluglu.wav");
-        bc2.setBounds(550,166,140,65);
-        add(bc2);
 
     }
 

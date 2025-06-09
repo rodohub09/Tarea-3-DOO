@@ -22,7 +22,12 @@ public class Inventario {
     }
 
     public Producto getProducto(int index) {
-        return inv.get(index);
+        try{
+            return inv.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
+
     }
 
     public int getSize(){

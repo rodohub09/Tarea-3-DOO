@@ -19,33 +19,33 @@ import static Modelos.Comprador.getComprador;
 import static Modelos.Expendedor.getExpendedor;
 
 public class BotonConsumir extends JButton {
+    int i;
+    String s;
     public BotonConsumir(int i, String s){
         super(new ImageIcon());
-        this.addActionListener(new oyenteBoton(i,s));
-        /*setOpaque(false);
+        this.addActionListener(new oyenteBoton());
+        this.i = i;
+        this.s = s;
+        setOpaque(false);
         setContentAreaFilled(false);
-        setBorderPainted(false)*/
+        setBorderPainted(false);
     }
     private class oyenteBoton implements ActionListener {
-        int i;
-        String s;
-
-        public oyenteBoton(int i, String s){
-            this.i = i;
-            this.s = s;
-        }
 
         public void actionPerformed(ActionEvent ae){
             try {
                 getComprador().inventario.consumirProducto(i);
-            }
-            catch(IndexOutOfBoundsException e){
-
-            }finally {
                 reproducirSonido(s);
                 Ventana.getInstance().repaint();
             }
+            catch(IndexOutOfBoundsException e){
+
+            }
         }
+    }
+
+    public void setSonido(String s){
+        this.s = s;
     }
 
     private void reproducirSonido(String s){
